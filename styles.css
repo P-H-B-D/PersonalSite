@@ -1,0 +1,176 @@
+@font-face {
+    font-family: 'hellovetica';
+    src: url('hellovetica.ttf') format('truetype');
+  }
+  
+body {
+    background-color: #008080;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .mainWindow {
+    position: absolute;
+    background-color: #c0c0c0;
+    width: 300px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    border: 1.5px solid #808080;
+    font-family: 'hellovetica', monospace; /* Pixelated font */
+    border-style: solid;
+    border-color:black;
+  }
+
+  .aboutWindow{
+    position: absolute;
+    top:5%;
+    left:5%;
+    background-color: #c0c0c0;
+    width: 300px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    border: 1.5px solid #808080;
+    font-family: 'hellovetica', monospace; /* Pixelated font */
+    border-style: solid;
+    border-color:black;
+    display:none;
+  }
+  
+  .title-bar {
+    background-color: rgb(140, 140, 140);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    border-bottom: solid 1.5px #000000;
+  
+  }
+  .title-bar-about {
+    background-color: rgb(140, 140, 140);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    border-bottom: solid 1.5px #000000;
+  
+  }
+  
+  .title {
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+  }
+  
+  .buttons {
+    display: flex;
+    gap: 5px;
+  }
+  
+  .button {
+    background-color: #c0c0c0;
+    width: 10px;
+    height: 10px;
+    border: 1px solid black;
+    cursor:pointer;
+  }
+  
+  .content {
+    padding: 10px;
+    font-size: 9px;
+  }
+  
+  .win98-button {
+    background-color: #c0c0c0;
+    border: 1px solid #808080;
+    padding: 2px 5px;
+    font-family: 'hellovetica', monospace;
+    font-size: 9px;
+    cursor: pointer;
+  }
+  
+  a {
+    color: #0077B5; /* LinkedIn's blue color */
+    text-decoration: none; /* Removes the underline */
+    }
+
+    a:hover {
+        text-decoration: underline; /* Adds an underline when hovered */
+    }
+
+    .flex{
+    display:flex;
+}
+
+.computer {
+    width:75px;
+    height:75px;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    cursor: pointer; /* Makes it look clickable */
+    /* z-index: 1000; Ensures it's above other elements */
+}
+.computerText {
+
+    position: fixed;
+    top: 85px;
+    left: 22px;
+    font-family: 'hellovetica', monospace;
+    font-size: 7px;
+    cursor: pointer;
+
+}
+
+.about {
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    top: 120px;
+    left: 20px;
+    cursor: pointer; /* Makes it look clickable */
+    /* z-index: 1000; Ensures it's above other elements */
+}
+.aboutText {
+
+    position: fixed;
+    top: 185px;
+    left: 22px;
+    font-family: 'hellovetica', monospace;
+    font-size: 7px;
+    cursor: pointer;
+
+
+}
+.AboutWindowText{
+    /* letter-spacing: 2px; */
+    word-spacing:5px;
+}
+
+
+.button {
+    width: 20px;   /* Width of each button */
+    height: 20px;  /* Height of each button */
+    display: inline-block;
+    text-align: center;
+    line-height: 20px;  /* Vertically centers the text/icon in the button */
+    /* Add other styles as needed */
+}
+
+.contentItem{
+    cursor: pointer;
+}
+.contentContainer{
+    display:flex;
+    gap:50px;
+    /* flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding:10px; */
+}
+.phbdImage{
+    padding-top:10px;
+    width:110px;
+    height:150px;
+}
