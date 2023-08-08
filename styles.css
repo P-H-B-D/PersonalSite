@@ -24,8 +24,8 @@ body {
   }
   .startupsWindow {
     position: absolute;
-    top:25%;
-    left:5%;
+    top:10%;
+    left:15%;
     background-color: #c0c0c0;
     width: 300px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
@@ -37,7 +37,7 @@ body {
   }
   .researchWindow {
     position: absolute;
-    top:55%;
+    top:45%;
     left:5%;
     background-color: #c0c0c0;
     width: 300px;
@@ -50,8 +50,8 @@ body {
   }
   .projectsWindow {
     position: absolute;
-    top:35%;
-    left:5%;
+    top:65%;
+    left:20%;
     background-color: #c0c0c0;
     width: 300px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
@@ -63,8 +63,8 @@ body {
   }
   .interestsWindow {
     position: absolute;
-    top:45%;
-    left:5%;
+    top:70%;
+    left:65%;
     background-color: #c0c0c0;
     width: 300px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
@@ -79,7 +79,7 @@ body {
   .aboutWindow{
     position: absolute;
     top:5%;
-    left:5%;
+    left:65%;
     background-color: #c0c0c0;
     width: 300px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
