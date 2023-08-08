@@ -33,7 +33,48 @@ body {
     font-family: 'hellovetica', monospace; /* Pixelated font */
     border-style: solid;
     border-color:black;
+    display:none;
   }
+  .researchWindow {
+    position: absolute;
+    top:55%;
+    left:5%;
+    background-color: #c0c0c0;
+    width: 300px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    border: 1.5px solid #808080;
+    font-family: 'hellovetica', monospace; /* Pixelated font */
+    border-style: solid;
+    border-color:black;
+    display:none;
+  }
+  .projectsWindow {
+    position: absolute;
+    top:35%;
+    left:5%;
+    background-color: #c0c0c0;
+    width: 300px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    border: 1.5px solid #808080;
+    font-family: 'hellovetica', monospace; /* Pixelated font */
+    border-style: solid;
+    border-color:black;
+    display:none;
+  }
+  .interestsWindow {
+    position: absolute;
+    top:45%;
+    left:5%;
+    background-color: #c0c0c0;
+    width: 300px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    border: 1.5px solid #808080;
+    font-family: 'hellovetica', monospace; /* Pixelated font */
+    border-style: solid;
+    border-color:black;
+    display:none;
+  }
+  
 
   .aboutWindow{
     position: absolute;
@@ -49,8 +90,30 @@ body {
     display:none;
   }
   
+  .copyright{
+
+    position:absolute;
+    bottom:3.5%;
+    right:3%;
+    /* margin-right:auto; */
+    font-family: 'hellovetica', monospace;
+    word-spacing:3px;
+    color:white;
+    font-size: 7px;
+    
+  }
+  .year{
+    position:absolute;
+    bottom:1%;
+    right:3%;
+    /* margin-right:auto; */
+    color:white;
+
+  }
+
   .title-bar {
     background-color: rgb(140, 140, 140);
+    /* background-color: rgb(255, 255, 255); */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -68,6 +131,33 @@ body {
   
   }
   .title-bar-startups {
+    background-color: rgb(140, 140, 140);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    border-bottom: solid 1.5px #000000;
+  
+  }
+  .title-bar-research {
+    background-color: rgb(140, 140, 140);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    border-bottom: solid 1.5px #000000;
+  
+  }
+  .title-bar-projects {
+    background-color: rgb(140, 140, 140);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    border-bottom: solid 1.5px #000000;
+  
+  }
+  .title-bar-interests {
     background-color: rgb(140, 140, 140);
     display: flex;
     justify-content: space-between;
@@ -181,6 +271,7 @@ body {
 .contentItem{
     cursor: pointer;
 }
+
 .contentContainer{
     display:flex;
     gap:50px;
@@ -195,4 +286,7 @@ body {
     width:92px;
     height:120px;
     border: 1.5px solid #000000;
+}
+.mainWindow, .aboutWindow, .startupsWindow, .researchWindow, .projectsWindow, .interestsWindow {
+  z-index: 1; /* Or another initial value, but make sure currentZIndex starts higher */
 }
