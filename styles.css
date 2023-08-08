@@ -22,6 +22,18 @@ body {
     border-style: solid;
     border-color:black;
   }
+  .startupsWindow {
+    position: absolute;
+    top:25%;
+    left:5%;
+    background-color: #c0c0c0;
+    width: 300px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    border: 1.5px solid #808080;
+    font-family: 'hellovetica', monospace; /* Pixelated font */
+    border-style: solid;
+    border-color:black;
+  }
 
   .aboutWindow{
     position: absolute;
@@ -47,6 +59,15 @@ body {
   
   }
   .title-bar-about {
+    background-color: rgb(140, 140, 140);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    border-bottom: solid 1.5px #000000;
+  
+  }
+  .title-bar-startups {
     background-color: rgb(140, 140, 140);
     display: flex;
     justify-content: space-between;
@@ -170,7 +191,8 @@ body {
     padding:10px; */
 }
 .phbdImage{
-    padding-top:10px;
-    width:110px;
-    height:150px;
+    margin-top:8%;
+    width:92px;
+    height:120px;
+    border: 1.5px solid #000000;
 }
