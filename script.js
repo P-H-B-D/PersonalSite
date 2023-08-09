@@ -297,21 +297,25 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById("StartupsText").addEventListener('click', function() {
         if (windowElemStartups.style.display === 'none' || !windowElemStartups.style.display) {
             windowElemStartups.style.display = 'block';
+       
         } 
     });
     document.getElementById("ResearchText").addEventListener('click', function() {
         if (windowElemResearch.style.display === 'none' || !windowElemResearch.style.display) {
             windowElemResearch.style.display = 'block';
+
         } 
     });
     document.getElementById("ProjectsText").addEventListener('click', function() {
         if (windowElemProjects.style.display === 'none' || !windowElemProjects.style.display) {
             windowElemProjects.style.display = 'block';
+       
         } 
     });
     document.getElementById("InterestsText").addEventListener('click', function() {
         if (windowElemInterests.style.display === 'none' || !windowElemInterests.style.display) {
             windowElemInterests.style.display = 'block';
+            
         } 
     });
 

@@ -399,6 +399,7 @@ body {
 
 .contentItem{
     cursor: pointer;
+    display:flex;
 }
 
 .contentContainer{
