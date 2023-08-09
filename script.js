@@ -8,6 +8,13 @@ document.addEventListener('DOMContentLoaded', function() {
     var titleBarElem = document.querySelector('.title-bar');
     var computerElem = document.querySelector('.computer');
 
+    var aboutElem= document.querySelector('.about');
+    var startupsElem= document.querySelector('.startups');
+    var researchElem= document.querySelector('.research');
+    var projectsElem= document.querySelector('.projects');
+    var interestsElem= document.querySelector('.interests');
+
+
     var titleBarElemAbout= document.querySelector('.title-bar-about');
     var windowElemAbout = document.querySelector('.aboutWindow');
 
@@ -173,15 +180,40 @@ document.addEventListener('DOMContentLoaded', function() {
         windowElem.style.display = 'none';
     });
 
-    document.getElementById('cancelButton').addEventListener('click', function() {
-        windowElem.style.display = 'none';
-    });
+    // document.getElementById('cancelButton').addEventListener('click', function() {
+    //     windowElem.style.display = 'none';
+    // });
     computerElem.addEventListener('dblclick', function() {
         if (windowElem.style.display === 'none' || !windowElem.style.display) {
             windowElem.style.display = 'block';
         } 
-        
     });
+    aboutElem.addEventListener('dblclick', function() {
+        if (windowElemAbout.style.display === 'none' || !windowElemAbout.style.display) {
+            windowElemAbout.style.display = 'block';
+        }
+    });
+    startupsElem.addEventListener('dblclick', function() {
+        if (windowElemStartups.style.display === 'none' || !windowElemStartups.style.display) {
+            windowElemStartups.style.display = 'block';
+        }
+    });
+    researchElem.addEventListener('dblclick', function() {
+        if (windowElemResearch.style.display === 'none' || !windowElemResearch.style.display) {
+            windowElemResearch.style.display = 'block';
+        }
+    });
+    projectsElem.addEventListener('dblclick', function() {
+        if (windowElemProjects.style.display === 'none' || !windowElemProjects.style.display) {
+            windowElemProjects.style.display = 'block';
+        }
+    });
+    interestsElem.addEventListener('dblclick', function() {
+        if (windowElemInterests.style.display === 'none' || !windowElemInterests.style.display) {
+            windowElemInterests.style.display = 'block';
+        }
+    });
+
 
     //Desktop Touch Events
     document.querySelector('.close-btn').addEventListener('click', function() {
@@ -277,10 +309,10 @@ document.addEventListener('DOMContentLoaded', function() {
         bringToFront(event, windowElemInterests);
     });
 
-    // setTimeout(function() {
-    //     var element = document.querySelector('.positioner');
-    //     element.style.opacity = '0'; // set opacity to 0, which will fade out the div over 3 seconds
-    // }, 10000); // the delay of 10 seconds
+    setTimeout(function() {
+        var element = document.querySelector('.positioner');
+        element.style.opacity = '0'; // set opacity to 0, which will fade out the div over 3 seconds
+    }, 10000); // the delay of 10 seconds
     
     
   });

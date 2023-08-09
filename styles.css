@@ -25,7 +25,7 @@ body {
     border: 1.5px solid #808080;
     font-family: 'hellovetica', monospace; /* Pixelated font */
     border-style: solid;
-    border-color:black;
+    border-color: white black black white;
   }
   .startupsWindow {
     position: absolute;
@@ -37,7 +37,7 @@ body {
     border: 1.5px solid #808080;
     font-family: 'hellovetica', monospace; /* Pixelated font */
     border-style: solid;
-    border-color:black;
+    border-color: white black black white;
     display:none;
   }
   .researchWindow {
@@ -50,7 +50,7 @@ body {
     border: 1.5px solid #808080;
     font-family: 'hellovetica', monospace; /* Pixelated font */
     border-style: solid;
-    border-color:black;
+    border-color: white black black white;
     display:none;
   }
   .projectsWindow {
@@ -63,7 +63,7 @@ body {
     border: 1.5px solid #808080;
     font-family: 'hellovetica', monospace; /* Pixelated font */
     border-style: solid;
-    border-color:black;
+    border-color: white black black white;
     display:none;
   }
   .interestsWindow {
@@ -76,7 +76,7 @@ body {
     border: 1.5px solid #808080;
     font-family: 'hellovetica', monospace; /* Pixelated font */
     border-style: solid;
-    border-color:black;
+    border-color: white black black white;
     display:none;
   }
   
@@ -91,7 +91,7 @@ body {
     border: 1.5px solid #808080;
     font-family: 'hellovetica', monospace; /* Pixelated font */
     border-style: solid;
-    border-color:black;
+    border-color: white black black white;
     display:none;
   }
   
@@ -181,15 +181,18 @@ body {
   .buttons {
     display: flex;
     gap: 5px;
+    
   }
   
   .button {
     background-color: #c0c0c0;
     width: 10px;
     height: 10px;
-    border: 1px solid black;
-    cursor:pointer;
-  }
+    border-style: solid;
+    border-width: 2px;
+    border-color: white black black white;
+    cursor: pointer;
+}
   
   .content {
     padding: 10px;
@@ -212,6 +215,7 @@ body {
 
     a:hover {
         text-decoration: underline; /* Adds an underline when hovered */
+        color: #004e77;
     }
 
     .flex{
@@ -219,11 +223,11 @@ body {
 }
 
 .computer {
-    width:75px;
-    height:75px;
+    width:100px;
+    height:100px;
     position: fixed;
-    top: 10px;
-    left: 10px;
+    top: 3px;
+    left: 3px;
     cursor: pointer; /* Makes it look clickable */
     /* z-index: 1000; Ensures it's above other elements */
 }
@@ -239,25 +243,97 @@ body {
 }
 
 .about {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     position: fixed;
-    top: 120px;
-    left: 20px;
+    top: 130px;
+    left: 25px;
     cursor: pointer; /* Makes it look clickable */
     /* z-index: 1000; Ensures it's above other elements */
 }
 .aboutText {
-
     position: fixed;
     top: 185px;
     left: 22px;
     font-family: 'hellovetica', monospace;
     font-size: 7px;
     cursor: pointer;
-
-
 }
+
+.startups {
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  top: 220px;
+  left: 25px;
+  cursor: pointer; /* Makes it look clickable */
+}
+.startupsText {
+  position: fixed;
+  top: 275px;
+  left: 22px;
+  font-family: 'hellovetica', monospace;
+  font-size: 7px;
+  cursor: pointer;
+}
+
+.research {
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  top: 310px;
+  left: 25px;
+  cursor: pointer; /* Makes it look clickable */
+}
+.researchText {
+  position: fixed;
+  top: 360px;
+  left: 22px;
+  font-family: 'hellovetica', monospace;
+  font-size: 7px;
+  cursor: pointer;
+}
+
+.projects{
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  top: 400px;
+  left: 25px;
+  cursor: pointer; /* Makes it look clickable */
+  /* z-index: 1000; Ensures it's above other elements */
+}
+
+.projectsText {
+  position: fixed;
+  top: 450px;
+  left: 22px;
+  font-family: 'hellovetica', monospace;
+  font-size: 7px;
+  cursor: pointer;
+}
+
+.interests{
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  top: 490px;
+  left: 25px;
+  cursor: pointer; /* Makes it look clickable */
+  /* z-index: 1000; Ensures it's above other elements */
+}
+
+.interestsText {
+  position: fixed;
+  top: 540px;
+  left: 22px;
+  font-family: 'hellovetica', monospace;
+  font-size: 7px;
+  cursor: pointer;
+}
+
+
+
 .AboutWindowText{
     /* letter-spacing: 2px; */
     word-spacing:5px;
@@ -295,20 +371,22 @@ body {
 .mainWindow, .aboutWindow, .startupsWindow, .researchWindow, .projectsWindow, .interestsWindow {
   z-index: 1; /* Or another initial value, but make sure currentZIndex starts higher */
 }
+
 .positioner{
   position:absolute;
-  bottom:0;
-  left:20px;
+  top:20px;
+  margin-left:147px;
   /* setting the initial opacity to 1, which is fully visible */
   opacity: 1;
   /* adding a transition of 3 seconds for the opacity */
   transition: opacity 3s;
+  z-index:-10;
 }
 
 .image-container {
   position: relative; /* This is important so the child absolute positioning is relative to this container */
   width: 400px; /* or whatever width you want */
-  height: 600px; /* or whatever height you want */
+  height: 200px; /* or whatever height you want */
   overflow: hidden; /* To make sure the image and text stay within the bounds of the container */
   color:white;
   word-spacing:3px;
