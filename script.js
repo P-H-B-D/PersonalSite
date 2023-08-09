@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var researchElem= document.querySelector('.research');
     var projectsElem= document.querySelector('.projects');
     var interestsElem= document.querySelector('.interests');
+    var sinusoidElem= document.querySelector('.sinusoid');
 
 
     var titleBarElemAbout= document.querySelector('.title-bar-about');
@@ -29,6 +30,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var titleBarElemInterests= document.querySelector('.title-bar-interests');
     var windowElemInterests = document.querySelector('.interestsWindow');
+
+    var titleBarElemSinusoid= document.querySelector('.title-bar-sinusoid');
+    var windowElemSinusoid = document.querySelector('.sinusoidWindow');
+
 
 
     function preventDefaultBehavior(e) {
@@ -63,6 +68,10 @@ document.addEventListener('DOMContentLoaded', function() {
     titleBarElemInterests.addEventListener('mousedown', function(event) {
         startDragging(event, windowElemInterests);
     });
+    titleBarElemSinusoid.addEventListener('mousedown', function(event) {
+        startDragging(event, windowElemSinusoid);
+    });
+
 
     titleBarElem.addEventListener('touchstart', function(event) {
         // Prevent default touch behavior
@@ -123,6 +132,16 @@ document.addEventListener('DOMContentLoaded', function() {
         event.clientY = event.changedTouches[0].clientY;
         startDragging(event, windowElemInterests);
     });
+    titleBarElemSinusoid.addEventListener('touchstart', function(event) {
+        // Prevent default touch behavior
+        event.preventDefault();
+        
+        // Use changedTouches[0] to get the first touch point's properties
+        event.clientX = event.changedTouches[0].clientX;
+        event.clientY = event.changedTouches[0].clientY;
+        startDragging(event, windowElemSinusoid);
+    });
+
 
 
     var currentZIndex = 0; // Initialize with 0 or with the highest z-index you have on your page.
@@ -213,6 +232,11 @@ document.addEventListener('DOMContentLoaded', function() {
             windowElemInterests.style.display = 'block';
         }
     });
+    sinusoidElem.addEventListener('dblclick', function() {
+        if (windowElemSinusoid.style.display === 'none' || !windowElemSinusoid.style.display) {
+            windowElemSinusoid.style.display = 'block';
+        }
+    });
 
 
     //Desktop Touch Events
@@ -233,6 +257,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     document.querySelector('.close-btn-interests').addEventListener('click', function() {
         windowElemInterests.style.display = 'none';
+    });
+    document.querySelector('.close-btn-sinusoid').addEventListener('click', function() {
+        windowElemSinusoid.style.display = 'none';
     });
 
 
@@ -255,6 +282,10 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('.close-btn-interests').addEventListener('touchstart', function() {
         windowElemInterests.style.display = 'none';
     });
+    document.querySelector('.close-btn-sinusoid').addEventListener('touchstart', function() {
+        windowElemSinusoid.style.display = 'none';
+    });
+
 
 
 
@@ -283,6 +314,7 @@ document.addEventListener('DOMContentLoaded', function() {
             windowElemInterests.style.display = 'block';
         } 
     });
+
     
 
     windowElem.addEventListener('click', function(event) {
@@ -315,6 +347,96 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 10000); // the delay of 10 seconds
     
     
+    //Sinusoid code
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+
+    const width = canvas.width;
+    const height = canvas.height;
+
+    let offset = 0; // This will give the movement effect
+
+    function drawGrid() {
+        const gridSize = 20;
+        ctx.strokeStyle = "#555";
+        for (let x = 0; x <= width; x += gridSize) {
+            ctx.beginPath();
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, height);
+            ctx.stroke();
+        }
+
+        for (let y = 0; y <= height; y += gridSize) {
+            ctx.beginPath();
+            ctx.moveTo(0, y);
+            ctx.lineTo(width, y);
+            ctx.stroke();
+        }
+    }
+
+    function drawSinusoid() {
+        ctx.fillStyle = "#333"; // dark background
+        ctx.fillRect(0, 0, width, height);
+    
+        
+    
+        ctx.strokeStyle = "#FFF";
+        ctx.beginPath();
+        for (let x = 0; x < width; x++) {
+            let y = height / 2 + Math.sin((x + offset) * 0.05) * 60;
+            ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+    
+        pixelate();
+        changeToNeonGreen();  // Call the function here
+    
+        offset += 2;
+        requestAnimationFrame(drawSinusoid);
+        drawGrid();
+    }
+
+    function pixelate() {
+        const pixelSize = 5;
+        const imageData = ctx.getImageData(0, 0, width, height);
+        const data = imageData.data;
+
+        for (let y = 0; y < height; y += pixelSize) {
+            for (let x = 0; x < width; x += pixelSize) {
+                const i = (y * width + x) * 4;
+                const avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
+
+                for (let py = 0; py < pixelSize; py++) {
+                    for (let px = 0; px < pixelSize; px++) {
+                        const pi = ((y + py) * width + (x + px)) * 4;
+                        data[pi] = avg;
+                        data[pi + 1] = avg;
+                        data[pi + 2] = avg;
+                    }
+                }
+            }
+        }
+        ctx.putImageData(imageData, 0, 0);
+    }
+    function changeToNeonGreen() {
+        const imageData = ctx.getImageData(0, 0, width, height);
+        const data = imageData.data;
+    
+        for (let i = 0; i < data.length; i += 4) {
+            // Check if the pixel color is not the background color
+            if (data[i] !== 51 || data[i+1] !== 51 || data[i+2] !== 51) { // Assuming #333 (51, 51, 51) is the background color
+                data[i] = 57;     // Red channel value for neon green
+                data[i + 1] = 255; // Green channel value for neon green
+                data[i + 2] = 20;  // Blue channel value for neon green
+            }
+        }
+    
+        ctx.putImageData(imageData, 0, 0);
+    }
+
+    drawSinusoid();
+
+
   });
 
 

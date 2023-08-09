@@ -79,7 +79,28 @@ body {
     border-color: white black black white;
     display:none;
   }
-  
+
+  .sinusoidWindow {
+    position: absolute;
+    top:70%;
+    /* left:65%; */
+    background-color: #c0c0c0;
+    width: 300px;
+    height: 200px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    border: 1.5px solid #808080;
+    font-family: 'hellovetica', monospace; /* Pixelated font */
+    border-style: solid;
+    border-color: white black black white;
+    /* display:none; */
+  }
+  .canvasHolder{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding-top:1.9%;
+
+  }
 
   .aboutWindow{
     position: absolute;
@@ -163,6 +184,15 @@ body {
   
   }
   .title-bar-interests {
+    background-color: rgb(140, 140, 140);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    border-bottom: solid 1.5px #000000;
+  
+  }
+  .title-bar-sinusoid {
     background-color: rgb(140, 140, 140);
     display: flex;
     justify-content: space-between;
@@ -331,6 +361,24 @@ body {
   font-size: 7px;
   cursor: pointer;
 }
+.sinusoid{
+  width:50px;
+  height:50px;
+  position: fixed;
+  top: 25px;
+  left: 120px;
+  cursor: pointer; /* Makes it look clickable */
+  /* z-index: 1000; Ensures it's above other elements */
+}
+
+.sinusoidText {
+  position: fixed;
+  top: 85px;
+  left: 110px;
+  font-family: 'hellovetica', monospace;
+  font-size: 7px;
+  cursor: pointer;
+}
 
 
 
@@ -366,7 +414,8 @@ body {
     margin-top:8%;
     width:92px;
     height:120px;
-    border: 1.5px solid #000000;
+    border: 1.5px solid;
+    border-color: white black black white;
 }
 .mainWindow, .aboutWindow, .startupsWindow, .researchWindow, .projectsWindow, .interestsWindow {
   z-index: 1; /* Or another initial value, but make sure currentZIndex starts higher */
