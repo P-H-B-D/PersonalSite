@@ -276,6 +276,11 @@ document.addEventListener('DOMContentLoaded', function() {
     windowElemInterests.addEventListener('click', function(event) {
         bringToFront(event, windowElemInterests);
     });
+
+    // setTimeout(function() {
+    //     var element = document.querySelector('.positioner');
+    //     element.style.opacity = '0'; // set opacity to 0, which will fade out the div over 3 seconds
+    // }, 10000); // the delay of 10 seconds
     
     
   });
