@@ -362,8 +362,8 @@ body {
   cursor: pointer;
 }
 .sinusoid{
-  width:50px;
-  height:50px;
+  width:53px;
+  height:53px;
   position: fixed;
   top: 25px;
   left: 120px;
@@ -379,6 +379,85 @@ body {
   font-size: 7px;
   cursor: pointer;
 }
+
+.linkedin{
+  width:55px;
+  height:55px;
+  position: fixed;
+  top: 133px;
+  left: 117px;
+  cursor: pointer; /* Makes it look clickable */
+  /* z-index: 1000; Ensures it's above other elements */
+}
+
+.linkedinText {
+  position: fixed;
+  top: 185px;
+  left: 110px;
+  font-family: 'hellovetica', monospace;
+  font-size: 7px;
+  cursor: pointer;
+}
+
+
+.twitter{
+  width:55px;
+  height:55px;
+  position: fixed;
+  top: 217px;
+  left: 117px;
+  cursor: pointer; /* Makes it look clickable */
+  /* z-index: 1000; Ensures it's above other elements */
+}
+
+.twitterText {
+  position: fixed;
+  top: 275px;
+  left: 110px;
+  font-family: 'hellovetica', monospace;
+  font-size: 7px;
+  cursor: pointer;
+}
+
+
+.github{
+  width:57px;
+  height:50px;
+  position: fixed;
+  top: 310px;
+  left: 117px;
+  cursor: pointer; /* Makes it look clickable */
+  /* z-index: 1000; Ensures it's above other elements */
+}
+
+.githubText {
+  position: fixed;
+  top: 360px;
+  left: 110px;
+  font-family: 'hellovetica', monospace;
+  font-size: 7px;
+  cursor: pointer;
+}
+
+.email{
+  width:57px;
+  height:50px;
+  position: fixed;
+  top: 400px;
+  left: 117px;
+  cursor: pointer; /* Makes it look clickable */
+  /* z-index: 1000; Ensures it's above other elements */
+}
+
+.emailText {
+  position: fixed;
+  top: 450px;
+  left: 110px;
+  font-family: 'hellovetica', monospace;
+  font-size: 7px;
+  cursor: pointer;
+}
+
 
 
 
@@ -424,7 +503,7 @@ body {
 
 .positioner{
   position:absolute;
-  top:20px;
+  top:50px;
   margin-left:147px;
   /* setting the initial opacity to 1, which is fully visible */
   opacity: 1;
