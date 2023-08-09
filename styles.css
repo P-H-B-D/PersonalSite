@@ -2,7 +2,11 @@
     font-family: 'hellovetica';
     src: url('hellovetica.ttf') format('truetype');
   }
-  
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 body {
     background-color: #008080;
     display: flex;
@@ -10,6 +14,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    overflow:hidden;
   }
   
   .mainWindow {
@@ -289,4 +294,54 @@ body {
 }
 .mainWindow, .aboutWindow, .startupsWindow, .researchWindow, .projectsWindow, .interestsWindow {
   z-index: 1; /* Or another initial value, but make sure currentZIndex starts higher */
+}
+.positioner{
+  position:absolute;
+  bottom:0;
+  left:20px;
+}
+
+.image-container {
+  position: relative; /* This is important so the child absolute positioning is relative to this container */
+  width: 210px; /* or whatever width you want */
+  height: 120px; /* or whatever height you want */
+  overflow: hidden; /* To make sure the image and text stay within the bounds of the container */
+}
+
+.image-container img {
+  width: 100%; /* To make the image take the full width of the container */
+  height: 100%; /* To make the image take the full height of the container */
+  object-fit: cover; /* To ensure the aspect ratio of the image is maintained */
+  transform: scaleX(-1);
+}
+
+.overlay-text-1 {
+  font-family: "hellovetica",'Courier New', Courier, monospace;
+  font-size:6px;
+  word-spacing:2px;
+  position: absolute; /* This takes the text out of the document flow and positions it over the image */
+  bottom: 39px; /* Distance from the bottom of the container */
+  left: 26px; /* Distance from the left of the container */
+  color: rgb(0, 0, 0); /* Text color */
+  padding: 5px; /* Spacing around the text */
+}
+.overlay-text-2 {
+  font-family: "hellovetica",'Courier New', Courier, monospace;
+  font-size:6px;
+  word-spacing:2px;
+  position: absolute; /* This takes the text out of the document flow and positions it over the image */
+  bottom: 53px; /* Distance from the bottom of the container */
+  left: 26px; /* Distance from the left of the container */
+  color: rgb(0, 0, 0); /* Text color */
+  padding: 5px; /* Spacing around the text */
+}
+.overlay-text-3 {
+  font-family: "hellovetica",'Courier New', Courier, monospace;
+  font-size:6px;
+  word-spacing:2px;
+  position: absolute; /* This takes the text out of the document flow and positions it over the image */
+  bottom: 68px; /* Distance from the bottom of the container */
+  left: 26px; /* Distance from the left of the container */
+  color: rgb(0, 0, 0); /* Text color */
+  padding: 5px; /* Spacing around the text */
 }

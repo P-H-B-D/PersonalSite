@@ -27,6 +27,10 @@ document.addEventListener('DOMContentLoaded', function() {
     function preventDefaultBehavior(e) {
         e.preventDefault();
     }
+    function bringToFront(event, element) {
+        currentZIndex++; // Increment the current z-index
+        element.style.zIndex = currentZIndex; // Assign the incremented z-index to the clicked window
+    }
 
 
     var offsetX, offsetY, isDragging = false;
@@ -53,10 +57,72 @@ document.addEventListener('DOMContentLoaded', function() {
         startDragging(event, windowElemInterests);
     });
 
+    titleBarElem.addEventListener('touchstart', function(event) {
+        // Prevent default touch behavior
+        event.preventDefault();
+    
+        // Use changedTouches[0] to get the first touch point's properties
+        event.clientX = event.changedTouches[0].clientX;
+        event.clientY = event.changedTouches[0].clientY;
+        startDragging(event, windowElem);
+    });
+
+    titleBarElemAbout.addEventListener('touchstart', function(event) {
+        // Prevent default touch behavior
+        event.preventDefault();
+
+        // Use changedTouches[0] to get the first touch point's properties
+        event.clientX = event.changedTouches[0].clientX;
+        event.clientY = event.changedTouches[0].clientY;
+        startDragging(event, windowElemAbout);
+    });
+
+    titleBarElemStartups.addEventListener('touchstart', function(event) {
+        // Prevent default touch behavior
+        event.preventDefault();
+
+        // Use changedTouches[0] to get the first touch point's properties
+        event.clientX = event.changedTouches[0].clientX;
+        event.clientY = event.changedTouches[0].clientY;
+        startDragging(event, windowElemStartups);
+    });
+
+    titleBarElemResearch.addEventListener('touchstart', function(event) {
+        // Prevent default touch behavior
+        event.preventDefault();
+
+        // Use changedTouches[0] to get the first touch point's properties
+        event.clientX = event.changedTouches[0].clientX;
+        event.clientY = event.changedTouches[0].clientY;
+        startDragging(event, windowElemResearch);
+    });
+
+    titleBarElemProjects.addEventListener('touchstart', function(event) {
+        // Prevent default touch behavior
+        event.preventDefault();
+
+        // Use changedTouches[0] to get the first touch point's properties
+        event.clientX = event.changedTouches[0].clientX;
+        event.clientY = event.changedTouches[0].clientY;
+        startDragging(event, windowElemProjects);
+    });
+
+    titleBarElemInterests.addEventListener('touchstart', function(event) {
+        // Prevent default touch behavior
+        event.preventDefault();
+
+        // Use changedTouches[0] to get the first touch point's properties
+        event.clientX = event.changedTouches[0].clientX;
+        event.clientY = event.changedTouches[0].clientY;
+        startDragging(event, windowElemInterests);
+    });
+
+
     var currentZIndex = 0; // Initialize with 0 or with the highest z-index you have on your page.
 
     function startDragging(event, element) {
         document.addEventListener('mousemove', preventDefaultBehavior);
+        document.addEventListener('touchmove', preventDefaultBehavior);
         isDragging = true;
         currentDraggingElem = element;
         offsetX = event.clientX - element.getBoundingClientRect().left;
@@ -66,7 +132,9 @@ document.addEventListener('DOMContentLoaded', function() {
         currentDraggingElem.style.zIndex = currentZIndex; // Assign the incremented z-index to the dragged window
 
         document.addEventListener('mousemove', onMouseMove);
+        document.addEventListener('touchmove', onTouchMove);
         document.addEventListener('mouseup', onMouseUp);
+        document.addEventListener('touchend', onMouseUp);
     }
 
     function onMouseMove(event) {
@@ -79,13 +147,25 @@ document.addEventListener('DOMContentLoaded', function() {
         currentDraggingElem.style.top = y + 'px';
     }
 
+    function onTouchMove(event) {
+        event.preventDefault();
+        
+        // Use changedTouches[0] to get the first touch point's properties
+        event.clientX = event.changedTouches[0].clientX;
+        event.clientY = event.changedTouches[0].clientY;
+    
+        onMouseMove(event); // You can reuse the logic from the mouse move
+    }
+
     function onMouseUp() {
         isDragging = false;
         currentDraggingElem = null;
         document.removeEventListener('mousemove', preventDefaultBehavior);
-
         document.removeEventListener('mousemove', onMouseMove);
         document.removeEventListener('mouseup', onMouseUp);
+        document.removeEventListener('touchmove', preventDefaultBehavior);
+        document.removeEventListener('touchmove', onTouchMove);
+        document.removeEventListener('touchend', onMouseUp);
     }
 
 
@@ -103,6 +183,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
     });
 
+    //Desktop Touch Events
     document.querySelector('.close-btn').addEventListener('click', function() {
         windowElem.style.display = 'none';
     });
@@ -119,6 +200,27 @@ document.addEventListener('DOMContentLoaded', function() {
         windowElemProjects.style.display = 'none';
     });
     document.querySelector('.close-btn-interests').addEventListener('click', function() {
+        windowElemInterests.style.display = 'none';
+    });
+
+
+    // Mobile Touch Events
+    document.querySelector('.close-btn').addEventListener('touchstart', function() {
+        windowElem.style.display = 'none';
+    });
+    document.querySelector('.close-btn-about').addEventListener('touchstart', function() {
+        windowElemAbout.style.display = 'none';
+    });
+    document.querySelector('.close-btn-startups').addEventListener('touchstart', function() {
+        windowElemStartups.style.display = 'none';
+    });
+    document.querySelector('.close-btn-research').addEventListener('touchstart', function() {
+        windowElemResearch.style.display = 'none';
+    });
+    document.querySelector('.close-btn-projects').addEventListener('touchstart', function() {
+        windowElemProjects.style.display = 'none';
+    });
+    document.querySelector('.close-btn-interests').addEventListener('touchstart', function() {
         windowElemInterests.style.display = 'none';
     });
 
@@ -148,6 +250,31 @@ document.addEventListener('DOMContentLoaded', function() {
         if (windowElemInterests.style.display === 'none' || !windowElemInterests.style.display) {
             windowElemInterests.style.display = 'block';
         } 
+    });
+    
+
+    windowElem.addEventListener('click', function(event) {
+        bringToFront(event, windowElem);
+    });
+    
+    windowElemAbout.addEventListener('click', function(event) {
+        bringToFront(event, windowElemAbout);
+    });
+    
+    windowElemStartups.addEventListener('click', function(event) {
+        bringToFront(event, windowElemStartups);
+    });
+    
+    windowElemResearch.addEventListener('click', function(event) {
+        bringToFront(event, windowElemResearch);
+    });
+    
+    windowElemProjects.addEventListener('click', function(event) {
+        bringToFront(event, windowElemProjects);
+    });
+    
+    windowElemInterests.addEventListener('click', function(event) {
+        bringToFront(event, windowElemInterests);
     });
     
     
