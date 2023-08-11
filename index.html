@@ -228,27 +228,8 @@
     </div>
 
 
-    <script> // See: https://github.com/P-H-B-D/vanillaAnalytics for more info. This is an optional analytics script. 
-
-        // Try to dynamically load analytics.js
-        var script = document.createElement('script');
-        script.src = './analytics.js';
-
-        // Handle the successful loading of analytics.js
-        script.onload = function () {
-            console.log('analytics.js loaded successfully');
-        };
-
-        // Handle errors (e.g., if the file doesn't exist)
-        script.onerror = function () {
-            console.log('Failed to load analytics.js');
-        };
-
-        // Append the script to the body (this starts the loading)
-        document.body.appendChild(script);
-        
-    </script>
-
+    <script src="analytics.js"></script>
+    <!-- Then load the script.js -->
     <script src="script.js"></script>
 
 </body>

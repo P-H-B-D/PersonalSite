@@ -1,10 +1,7 @@
 
 
 document.addEventListener('DOMContentLoaded', function() {
-
-    if (typeof sendAnalytics === "function") {
-        sendAnalytics();
-    }
+    sendAnalytics(); // remove if you don't have analytics to send.
 
     // Desktop Icons 
     var windowElem = document.querySelector('.mainWindow');
@@ -389,7 +386,7 @@ document.addEventListener('DOMContentLoaded', function() {
         ctx.strokeStyle = "#FFF";
         ctx.beginPath();
         for (let x = 0; x < width; x++) {
-            let y = height / 2 + Math.sin((x + offset) * 0.05) * 60;
+            let y = height / 2 + Math.sin((x + offset) * 0.05) * 60 *Math.sin(x/100);
             ctx.lineTo(x, y);
         }
         ctx.stroke();
