@@ -2,12 +2,14 @@
 
 document.addEventListener('DOMContentLoaded', function() {
 
-    var aboutText= document.querySelector('.AboutText');
-    
+    if (typeof sendAnalytics === "function") {
+        sendAnalytics();
+    }
+
+    // Desktop Icons 
     var windowElem = document.querySelector('.mainWindow');
     var titleBarElem = document.querySelector('.title-bar');
     var computerElem = document.querySelector('.computer');
-
     var aboutElem= document.querySelector('.about');
     var startupsElem= document.querySelector('.startups');
     var researchElem= document.querySelector('.research');
@@ -15,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var interestsElem= document.querySelector('.interests');
     var sinusoidElem= document.querySelector('.sinusoid');
 
-
+    // Windows + Title Bars
     var titleBarElemAbout= document.querySelector('.title-bar-about');
     var windowElemAbout = document.querySelector('.aboutWindow');
 

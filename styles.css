@@ -126,6 +126,7 @@ body {
     word-spacing:3px;
     color:white;
     font-size: 7px;
+    /* z-index:-10; */
     
   }
   .year{
@@ -257,7 +258,7 @@ body {
     height:100px;
     position: fixed;
     top: 3px;
-    left: 3px;
+    left: 0px;
     cursor: pointer; /* Makes it look clickable */
     /* z-index: 1000; Ensures it's above other elements */
 }
@@ -265,7 +266,7 @@ body {
 
     position: fixed;
     top: 85px;
-    left: 22px;
+    left: 14px;
     font-family: 'hellovetica', monospace;
     font-size: 7px;
     cursor: pointer;
@@ -284,7 +285,7 @@ body {
 .aboutText {
     position: fixed;
     top: 185px;
-    left: 22px;
+    left: 23px;
     font-family: 'hellovetica', monospace;
     font-size: 7px;
     cursor: pointer;
@@ -301,7 +302,7 @@ body {
 .startupsText {
   position: fixed;
   top: 275px;
-  left: 22px;
+  left: 10px;
   font-family: 'hellovetica', monospace;
   font-size: 7px;
   cursor: pointer;
@@ -318,7 +319,7 @@ body {
 .researchText {
   position: fixed;
   top: 360px;
-  left: 22px;
+  left: 14px;
   font-family: 'hellovetica', monospace;
   font-size: 7px;
   cursor: pointer;
@@ -337,7 +338,7 @@ body {
 .projectsText {
   position: fixed;
   top: 450px;
-  left: 22px;
+  left: 14px;
   font-family: 'hellovetica', monospace;
   font-size: 7px;
   cursor: pointer;
@@ -356,7 +357,7 @@ body {
 .interestsText {
   position: fixed;
   top: 540px;
-  left: 22px;
+  left: 14px;
   font-family: 'hellovetica', monospace;
   font-size: 7px;
   cursor: pointer;
@@ -503,8 +504,8 @@ body {
 
 .positioner{
   position:absolute;
-  top:50px;
-  margin-left:147px;
+  top:0px;
+  right:0px;
   /* setting the initial opacity to 1, which is fully visible */
   opacity: 1;
   /* adding a transition of 3 seconds for the opacity */
@@ -514,8 +515,8 @@ body {
 
 .image-container {
   position: relative; /* This is important so the child absolute positioning is relative to this container */
-  width: 400px; /* or whatever width you want */
-  height: 200px; /* or whatever height you want */
+  width: 230px; /* or whatever width you want */
+  height: 150px; /* or whatever height you want */
   overflow: hidden; /* To make sure the image and text stay within the bounds of the container */
   color:white;
   word-spacing:3px;
