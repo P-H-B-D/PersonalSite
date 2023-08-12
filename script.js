@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Desktop Icons 
     var windowElem = document.querySelector('.mainWindow');
     var titleBarElem = document.querySelector('.title-bar');
+
     var computerElem = document.querySelector('.computer');
     var aboutElem= document.querySelector('.about');
     var startupsElem= document.querySelector('.startups');
@@ -13,6 +14,27 @@ document.addEventListener('DOMContentLoaded', function() {
     var projectsElem= document.querySelector('.projects');
     var interestsElem= document.querySelector('.interests');
     var sinusoidElem= document.querySelector('.sinusoid');
+
+    // const elementsMap = {
+    // '.computer': '.mainWindow',
+    // '.about': '.windowElemAbout',
+    // '.startups': '.windowElemStartups',
+    // '.research': '.windowElemResearch',
+    // '.projects': '.windowElemProjects',
+    // '.interests': '.windowElemInterests',
+    // '.sinusoid': '.windowElemSinusoid'
+    // };
+
+    // Object.entries(elementsMap).forEach(([triggerElemSelector, targetElemSelector]) => {
+    //     const triggerElem = document.querySelector(triggerElemSelector);
+    //     const targetElem = document.querySelector(targetElemSelector);
+        
+    //     triggerElem.addEventListener('dblclick', function() {
+    //         if (targetElem.style.display === 'none' || !targetElem.style.display) {
+    //             targetElem.style.display = 'block';
+    //         }
+    //     });
+    // });
 
     // Windows + Title Bars
     var titleBarElemAbout= document.querySelector('.title-bar-about');
