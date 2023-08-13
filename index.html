@@ -10,51 +10,51 @@
 
 <body>
     <img class="computer" src="./media/pixelcomputer.png" />
-    <p class="computerText" style="color:white"><b>PHBD.xyz</b></p>
+    <p class="iconText" id="computerText"><b>PHBD.xyz</b></p>
 
     <img class="about" src="./media/abouticon.png" />
-    <p class="aboutText" style="color:white"><b>About.txt</b></p>
+    <p class="iconText" id="aboutText"><b>About.txt</b></p>
 
     <img class="startups" src="./media/startupsicon.png" />
-    <p class="startupsText" style="color:white"><b>Startups.docx</b></p>
+    <p class="iconText" id="startupsText"><b>Startups.docx</b></p>
 
     <img class="research" src="./media/researchicon.png" />
-    <p class="researchText" style="color:white"><b>Research.rtf</b></p>
+    <p class="iconText" id="researchText"><b>Research.rtf</b></p>
 
     <img class="projects" src="./media/projectsicon.png" />
-    <p class="projectsText" style="color:white"><b>Projects.pdf</b></p>
+    <p class="iconText" id="projectsText"><b>Projects.pdf</b></p>
 
     <img class="interests" src="./media/interestsicon.png" />
-    <p class="interestsText" style="color:white"><b>Interests.doc</b></p>
+    <p class="iconText" id="interestsText"><b>Interests.doc</b></p>
 
     <img class="sinusoid" src="./media/sinusoid.png" />
-    <p class="sinusoidText" style="color:white"><b>Sinusoid.exe</b></p>
+    <p class="iconText" id="sinusoidText"><b>Sinusoid.exe</b></p>
 
     <a href="https://twitter.com/0xPHBD" target="_blank">
         <img class="twitter" src="./media/twitter.png" />
-        <p class="twitterText" style="color:white"><b>Twitter.html</b></p>
+        <p class="iconText" id="twitterText"><b>Twitter.html</b></p>
     </a>
 
     <a href="https://www.linkedin.com/in/peter-bowman-davis/" target="_blank">
         <img class="linkedin" src="./media/linkedin.png" />
-        <p class="linkedinText" style="color:white"><b>LinkedIn.html</b></p>
+        <p class="iconText" id="linkedinText"><b>LinkedIn.html</b></p>
     </a>
 
     <a href="https://github.com/P-H-B-D" target="_blank">
         <img class="github" src="./media/github.png" />
-        <p class="githubText" style="color:white"><b>Github.html</b></p>
+        <p class="iconText" id="githubText"><b>Github.html</b></p>
     </a>
 
     <a href="mailto: peter.bowman-davis@yale.edu" target="_blank">
         <img class="email" src="./media/mail.png" />
-        <p class="emailText" style="color:white"><b>MyEmail.eml</b></p>
+        <p class="iconText" id="emailText"><b>MyEmail.eml</b></p>
     </a>
 
-    <div class="mainWindow">
-        <div class="title-bar">
+    <div class="window" id="mainWindow">
+        <div class="title-bar" id="title-bar-main">
             <div class="title">PHBD.xyz</div>
             <div class="buttons">
-                <div class="button close-btn" style="display:flex; align-items: center; justify-content: center;">✕
+                <div class="button close-btn" id="close-btn-main">✕
                 </div> <!-- Close button -->
             </div>
         </div>
@@ -65,75 +65,70 @@
                 <p class="contentItem" id="ResearchText"> Research </p>
                 <p class="contentItem" id="ProjectsText"> Projects </p>
                 <p class="contentItem" id="InterestsText"> Interests </p>
-                <!-- <a href="https://www.linkedin.com/in/peter-bowman-davis/" target="_blank">LinkedIn.</a> -->
 
                 <button class="win98-button" id="okButton">
                     <div>Close</div>
                 </button>
-                <!-- <button class="win98-button" id="cancelButton">Cancel</button> -->
+                >
             </div>
             <img src="./media/download.png" class="phbdImage" />
         </div>
     </div>
 
-    <div class="aboutWindow">
-        <div class="title-bar-about">
+    <div class="window" id="aboutWindow">
+        <div class="title-bar" id="title-bar-about">
             <div class="title">About</div>
             <div class="buttons">
-                <div class="button close-btn-about" style="display:flex; align-items: center; justify-content: center;">
+                <div class="button close-btn" id="close-btn-about">
                     ✕</div> <!-- Close button -->
             </div>
         </div>
         <div class="content">
-            <p class="AboutWindowText"> Hello, my name is Peter Bowman-Davis. I am an experienced startup founder and
+            <p> Hello, my name is Peter Bowman-Davis. I am an experienced startup founder and
                 software engineer.
                 I have served a variety of roles and led technical teams in complex projects. The software I have
                 written may be found at scales ranging from bare-metal microcontrollers to globally distributed
                 webapplications. I thrive under pressure and work best in fast-paced environments.
             </p>
-            <p class="AboutWindowText">Currently: <a href="https://www.stackaccel.ai" target="_blank">StackAccel.ai</a>
-                , <a href="https://www.8vc.com/" target="_blank"> <span style="font-family: monospace; font-size:17px;"
-                        ;>8</span>VC </a> </p>
-            <p class="AboutWindowText">Education: B.S., Yale Physics <span
-                    style="font-family: monospace; font-size:15px;" ;>2025</span></p>
-            <p class="AboutWindowText">Previous Employers: UCSF, Halborn, RTI Cables, <span
-                    style="font-family: monospace; font-size:15px;" ;>6</span>th Man Ventures</p>
-            <p class="AboutWindowText">Languages:</p>
-            <p class="AboutWindowText">- Python: Torch, Keras, Numpy, Pandas, Matplotlib</p>
-            <p class="AboutWindowText">- JS<span style="font-family: monospace; font-size:17px;" ;>+</span>TS: React</p>
-            <p class="AboutWindowText">- C<span style="font-family: monospace; font-size:17px;" ;>++</span></p>
+            <p>Currently: <a href="https://www.stackaccel.ai" target="_blank">StackAccel.ai</a>
+                , <a href="https://www.8vc.com/" target="_blank"> <span class="monotext"
+                        style="font-size:17px;">8</span>VC </a> </p>
+            <p>Education: B.S., Yale Physics <span class="monotext">2025</span></p>
+            <p>Previous Employers: UCSF, Halborn, RTI Cables, <span class="monotext"> 6</span>th Man Ventures</p>
+            <p>Languages:</p>
+            <p>- Python: Torch, Keras, Numpy, Pandas, Matplotlib</p>
+            <p>- JS<span class="monotext" style="font-size:17px;" ;>+</span>TS: React</p>
+            <p>- C<span class="monotext" style="font-size:17px;" ;>++</span></p>
         </div>
     </div>
 
-    <div class="startupsWindow">
-        <div class="title-bar-startups">
+    <div class="window" id="startupsWindow">
+        <div class="title-bar" id="title-bar-startups">
             <div class="title">Startups</div>
             <div class="buttons">
-                <div class="button close-btn-startups"
-                    style="display:flex; align-items: center; justify-content: center;" ;>✕</div> <!-- Close button -->
+                <div class="button close-btn" id="close-btn-startups">✕</div> <!-- Close button -->
             </div>
         </div>
         <div class="content">
-            <div class="AboutWindowText">
+            <div>
                 <p>I am currently building <a href="https://www.stackaccel.ai">StackAccel, a CRM for teams selling to
-                        Web<span style="font-family: monospace; font-size:16px;">3</span> companies.</a></p>
+                        Web<span class="monotext" style="font-size:16px;">3</span> companies.</a></p>
                 <p>Previously, I built Politeia - a blockchain signals intelligence startup - which was acquired by <a
-                        href="https://www.halborn.com/">Halborn Cybersecurity</a> in <span
-                        style="font-family: monospace; font-size:16px;">2022.</span></p>
+                        href="https://www.halborn.com/">Halborn Cybersecurity</a> in <span class="monotext"
+                        style="font-size:16px;">2022.</span></p>
             </div>
         </div>
     </div>
 
-    <div class="researchWindow">
-        <div class="title-bar-research">
+    <div class="window" id="researchWindow">
+        <div class="title-bar" id="title-bar-research">
             <div class="title">Research</div>
             <div class="buttons">
-                <div class="button close-btn-research"
-                    style="display:flex; align-items: center; justify-content: center;">✕</div> <!-- Close button -->
+                <div class="button close-btn" id="close-btn-research">✕</div> <!-- Close button -->
             </div>
         </div>
         <div class="content">
-            <div class="AboutWindowText">
+            <div>
                 <p>Published and forthcoming research:</p>
                 <p>- <a href="https://drive.google.com/file/d/19bw3myD85pyMk1nTCljz7HIgb_accN7_/view?usp=sharing"
                         target="_blank">Conflicting Expectations: Convergence and Chaos in Simple High-Dimensional
@@ -143,34 +138,30 @@
                 <p>- <a href="https://docs.google.com/presentation/d/1HNrtp5poOLWLuWFBDT5hs2iDtn1_UY6d9b1C5y6i9hM/edit?usp=sharing"
                         target="_blank">Solving IVPs with Physics-Informed-Neural-Networks</a></p>
                 <p>- <a href="https://github.com/P-H-B-D/LLMNumericBias" target="_blank">LLM Numerical Bias
-                        Investigation <span style="font-family: monospace; font-size:15px;" ;>(</span>Ongoing<span
-                            style="font-family: monospace; font-size:15px;" ;>)</span></a></p>
+                        Investigation <span class="monotext">(</span>Ongoing<span class="monotext">)</span></a></p>
                 <p>- <a href="https://github.com/P-H-B-D/EmbeddingsTranslation" target="_blank">VectorBridge: A Robust
-                        Technique for Cross-Model Embeddings Translation <span
-                            style="font-family: monospace; font-size:15px;" ;>(</span>Ongoing<span
-                            style="font-family: monospace; font-size:15px;" ;>)</span></a></p>
+                        Technique for Cross-Model Embeddings Translation <span class="monotext">(</span>Ongoing<span
+                            class="monotext">)</span></a></p>
             </div>
         </div>
     </div>
 
 
-    <div class="projectsWindow">
-        <div class="title-bar-projects">
+    <div class="window" id="projectsWindow">
+        <div class="title-bar" id="title-bar-projects">
             <div class="title">Projects</div>
             <div class="buttons">
-                <div class="button close-btn-projects"
-                    style="display:flex; align-items: center; justify-content: center;">✕</div> <!-- Close button -->
+                <div class="button close-btn" id="close-btn-projects">✕</div> <!-- Close button -->
             </div>
         </div>
         <div class="content">
-            <div class="AboutWindowText">
+            <div>
                 <p>Projects I am currently working or completed include:</p>
                 <p>- <a href="https://github.com/P-H-B-D/PreImage" target="_blank">PreImage – CLI tool for Python
-                        dependency optimization. <span style="font-family: monospace; font-size:15px;"
-                            ;>(</span>Ongoing<span style="font-family: monospace; font-size:15px;" ;>)</span></a> </p>
+                        dependency optimization. <span class="monotext" ;>(</span>Ongoing<span
+                            class="monotext">)</span></a> </p>
                 <p>- <a href="https://github.com/P-H-B-D/LLMNumericBias" target="_blank">LLM Numeric Bias Investigation.
-                        <span style="font-family: monospace; font-size:15px;" ;>(</span>Ongoing<span
-                            style="font-family: monospace; font-size:15px;" ;>)</span></a></p>
+                        <span class="monotext">(</span>Ongoing<span class="monotext">)</span></a></p>
                 <p>- <a href="https://github.com/P-H-B-D/678_PINN" target="_blank">Physics-Informed-Neural-Network
                         Demos.</a> </p>
                 <p>- <a href="https://github.com/P-H-B-D/PersonalSite" target="_blank">This website.</a></p>
@@ -179,32 +170,29 @@
     </div>
 
 
-    <div class="interestsWindow">
-        <div class="title-bar-interests">
+    <div class="window" id="interestsWindow">
+        <div class="title-bar" id="title-bar-interests">
             <div class="title">Interests</div>
             <div class="buttons">
-                <div class="button close-btn-interests"
-                    style="display:flex; align-items: center; justify-content: center;">✕</div> <!-- Close button -->
+                <div class="button close-btn" id="close-btn-interests">✕</div> <!-- Close button -->
             </div>
         </div>
         <div class="content">
-            <div class="AboutWindowText">
+            <div>
                 <p>- Nonlinear dynamics and complex systems modeling. </p>
                 <p>- Chaos Theory, cellular automata, and numerical methods.</p>
-                <p>- Product and interface design <span style="font-family: monospace; font-size:15px;"
-                        ;>(</span>Bauhaus School, Dieter Rams, Teenage Engineering<span
-                        style="font-family: monospace; font-size:15px;" ;>)</span>.</p>
+                <p>- Product and interface design <span class="monotext">(</span>Bauhaus School, Dieter Rams, Teenage
+                    Engineering<span class="monotext">)</span>.</p>
                 <p>- LLM ensembles and agent design.</p>
             </div>
         </div>
     </div>
 
-    <div class="sinusoidWindow">
-        <div class="title-bar-sinusoid">
+    <div class="window" id="sinusoidWindow">
+        <div class="title-bar" id="title-bar-sinusoid">
             <div class="title">Sinusoid.exe</div>
             <div class="buttons">
-                <div class="button close-btn-sinusoid"
-                    style="display:flex; align-items: center; justify-content: center;">✕</div> <!-- Close button -->
+                <div class="button close-btn" id="close-btn-sinusoid">✕</div> <!-- Close button -->
             </div>
         </div>
         <div class="canvasHolder">
@@ -215,7 +203,7 @@
 
 
     <div class="copyright">
-        <p>Peter Bowman-Davis <span style="font-family: monospace; font-size:10px;">2023</span></p>
+        <p>Peter Bowman-Davis <span class="monotext" style="font-size:10px;">2023</span></p>
     </div>
 
     <div class="positioner">

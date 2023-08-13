@@ -27,13 +27,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     //To define additional windows, simply add them to the globalsMap with associated info. 
     const globalsMap = [ 
-        { icon:".computer", window:".mainWindow", titlebar: '.title-bar', closebtn: '.close-btn',mainWindowLabel: null},
-        { icon:".about", window:".aboutWindow", titlebar: '.title-bar-about', closebtn: '.close-btn-about', mainWindowLabel: "AboutText"},
-        { icon:".startups", window:".startupsWindow", titlebar: '.title-bar-startups', closebtn: '.close-btn-startups', mainWindowLabel: "StartupsText"},
-        { icon:".research", window:".researchWindow", titlebar: '.title-bar-research', closebtn: '.close-btn-research', mainWindowLabel: "ResearchText"},
-        { icon:".projects", window:".projectsWindow", titlebar: '.title-bar-projects', closebtn: '.close-btn-projects', mainWindowLabel: "ProjectsText"},
-        { icon:".interests", window:".interestsWindow", titlebar: '.title-bar-interests', closebtn: '.close-btn-interests', mainWindowLabel: "InterestsText"},
-        { icon:".sinusoid", window:".sinusoidWindow", titlebar: '.title-bar-sinusoid', closebtn: '.close-btn-sinusoid', mainWindowLabel: null},
+        { icon:".computer", window:"mainWindow", titlebar: 'title-bar-main', closebtn: 'close-btn-main',mainWindowLabel: null},
+        { icon:".about", window:"aboutWindow", titlebar: 'title-bar-about', closebtn: 'close-btn-about', mainWindowLabel: "AboutText"},
+        { icon:".startups", window:"startupsWindow", titlebar: 'title-bar-startups', closebtn: 'close-btn-startups', mainWindowLabel: "StartupsText"},
+        { icon:".research", window:"researchWindow", titlebar: 'title-bar-research', closebtn: 'close-btn-research', mainWindowLabel: "ResearchText"},
+        { icon:".projects", window:"projectsWindow", titlebar: 'title-bar-projects', closebtn: 'close-btn-projects', mainWindowLabel: "ProjectsText"},
+        { icon:".interests", window:"interestsWindow", titlebar: 'title-bar-interests', closebtn: 'close-btn-interests', mainWindowLabel: "InterestsText"},
+        { icon:".sinusoid", window:"sinusoidWindow", titlebar: 'title-bar-sinusoid', closebtn: 'close-btn-sinusoid', mainWindowLabel: null},
     ];
 
     var offsetX, offsetY, isDragging = false;
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         //Double click icon functionality
         var triggerElem = document.querySelector(icon);
-        var targetElem = document.querySelector(window);
+        var targetElem = document.getElementById(window);
         
         triggerElem.addEventListener('dblclick', function() {
             if (targetElem.style.display === 'none' || !targetElem.style.display) {
@@ -68,8 +68,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
         //Dragging
-        triggerElem = document.querySelector(titlebar);
-        targetElem = document.querySelector(window);
+        triggerElem = document.getElementById(titlebar);
+        targetElem = document.getElementById(window);
 
         // For mouse behavior
         triggerElem.addEventListener('mousedown', function(event) {
@@ -89,8 +89,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
         //Closebtn mapping
-        triggerElem = document.querySelector(closebtn);
-        targetElem = document.querySelector(window);
+        triggerElem = document.getElementById(closebtn);
+        targetElem = document.getElementById(window);
 
         //close btn clicked on dekstop
         triggerElem.addEventListener('click', function() {
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if(mainWindowLabel != null){
 
             triggerElem = document.getElementById(mainWindowLabel);
-            targetElem = document.querySelector(window);
+            targetElem = document.getElementById(window);
 
             triggerElem.addEventListener('click', function() {
                 if (targetElem.style.display === 'none' || !targetElem.style.display) {
@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
         //Brings window to front if clicked
-        triggerElem = document.querySelector(window);
+        triggerElem = document.getElementById(window);
 
         // For mouse behavior
         triggerElem.addEventListener('mousedown', function(event) {

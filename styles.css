@@ -1,294 +1,216 @@
 @font-face {
-    font-family: 'hellovetica';
-    src: url('hellovetica.ttf') format('truetype');
-  }
+  font-family: 'hellovetica';
+  src: url('hellovetica.ttf') format('truetype');
+}
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-body {
-    background-color: #008080;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    overflow:hidden;
-  }
-  
-  .mainWindow {
-    position: absolute;
-    background-color: #c0c0c0;
-    width: 300px;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-    border: 1.5px solid #808080;
-    font-family: 'hellovetica', monospace; /* Pixelated font */
-    border-style: solid;
-    border-color: white black black white;
-  }
-  .startupsWindow {
-    position: absolute;
-    top:10%;
-    left:15%;
-    background-color: #c0c0c0;
-    width: 300px;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-    border: 1.5px solid #808080;
-    font-family: 'hellovetica', monospace; /* Pixelated font */
-    border-style: solid;
-    border-color: white black black white;
-    display:none;
-  }
-  .researchWindow {
-    position: absolute;
-    top:45%;
-    left:5%;
-    background-color: #c0c0c0;
-    width: 300px;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-    border: 1.5px solid #808080;
-    font-family: 'hellovetica', monospace; /* Pixelated font */
-    border-style: solid;
-    border-color: white black black white;
-    display:none;
-  }
-  .projectsWindow {
-    position: absolute;
-    top:65%;
-    left:20%;
-    background-color: #c0c0c0;
-    width: 300px;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-    border: 1.5px solid #808080;
-    font-family: 'hellovetica', monospace; /* Pixelated font */
-    border-style: solid;
-    border-color: white black black white;
-    display:none;
-  }
-  .interestsWindow {
-    position: absolute;
-    top:70%;
-    left:65%;
-    background-color: #c0c0c0;
-    width: 300px;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-    border: 1.5px solid #808080;
-    font-family: 'hellovetica', monospace; /* Pixelated font */
-    border-style: solid;
-    border-color: white black black white;
-    display:none;
-  }
-
-  .sinusoidWindow {
-    position: absolute;
-    top:70%;
-    /* left:65%; */
-    background-color: #c0c0c0;
-    width: 300px;
-    height: 200px;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-    border: 1.5px solid #808080;
-    font-family: 'hellovetica', monospace; /* Pixelated font */
-    border-style: solid;
-    border-color: white black black white;
-    /* display:none; */
-  }
-  .canvasHolder{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding-top:1.9%;
-
-  }
-
-  .aboutWindow{
-    position: absolute;
-    top:5%;
-    left:65%;
-    background-color: #c0c0c0;
-    width: 300px;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-    border: 1.5px solid #808080;
-    font-family: 'hellovetica', monospace; /* Pixelated font */
-    border-style: solid;
-    border-color: white black black white;
-    display:none;
-  }
-  
-  .copyright{
-
-    position:absolute;
-    bottom:1.5%;
-    right:2%;
-    /* margin-right:auto; */
-    font-family: 'hellovetica', monospace;
-    word-spacing:3px;
-    color:white;
-    font-size: 7px;
-    /* z-index:-10; */
-    
-  }
-  .year{
-    position:absolute;
-    bottom:1%;
-    right:3%;
-    /* margin-right:auto; */
-    color:white;
-
-  }
-
-  .title-bar {
-    background-color: rgb(140, 140, 140);
-    /* background-color: rgb(255, 255, 255); */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px;
-    border-bottom: solid 1.5px #000000;
-  
-  }
-  .title-bar-about {
-    background-color: rgb(140, 140, 140);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px;
-    border-bottom: solid 1.5px #000000;
-  
-  }
-  .title-bar-startups {
-    background-color: rgb(140, 140, 140);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px;
-    border-bottom: solid 1.5px #000000;
-  
-  }
-  .title-bar-research {
-    background-color: rgb(140, 140, 140);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px;
-    border-bottom: solid 1.5px #000000;
-  
-  }
-  .title-bar-projects {
-    background-color: rgb(140, 140, 140);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px;
-    border-bottom: solid 1.5px #000000;
-  
-  }
-  .title-bar-interests {
-    background-color: rgb(140, 140, 140);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px;
-    border-bottom: solid 1.5px #000000;
-  
-  }
-  .title-bar-sinusoid {
-    background-color: rgb(140, 140, 140);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px;
-    border-bottom: solid 1.5px #000000;
-  
-  }
-  
-  .title {
-    color: white;
-    font-size: 10px;
-    font-weight: bold;
-  }
-  
-  .buttons {
-    display: flex;
-    gap: 5px;
-    
-  }
-  
-  .button {
-    background-color: #c0c0c0;
-    width: 10px;
-    height: 10px;
-    border-style: solid;
-    border-width: 2px;
-    border-color: white black black white;
-    cursor: pointer;
+p {
+  word-spacing: 5px;
 }
-  
-  .content {
-    padding: 10px;
-    font-size: 9px;
-  }
-  
-  .win98-button {
-    background-color: #c0c0c0;
-    border: 1px solid #808080;
-    padding: 2px 5px;
-    font-family: 'hellovetica', monospace;
-    font-size: 9px;
-    cursor: pointer;
-  }
-  
-  a {
-    color: #0077B5; /* LinkedIn's blue color */
-    text-decoration: none; /* Removes the underline */
-    }
 
-    a:hover {
-        text-decoration: underline; /* Adds an underline when hovered */
-        color: #004e77;
-    }
+body {
+  background-color: #008080;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
 
-    .flex{
-    display:flex;
+.window {
+  position: absolute;
+  background-color: #c0c0c0;
+  width: 300px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  border: 1.5px solid #808080;
+  font-family: 'hellovetica', monospace;
+  border-style: solid;
+  border-color: white black black white;
+  display: none;
+}
+
+#mainWindow {
+  display: block;
+}
+
+#aboutWindow {
+  top: 5%;
+  left: 65%;
+}
+
+#startupsWindow {
+  top: 10%;
+  left: 15%;
+}
+
+#researchWindow {
+  top: 45%;
+  left: 5%;
+}
+
+#projectsWindow {
+  top: 65%;
+  left: 20%;
+}
+
+#interestsWindow {
+  top: 70%;
+  left: 65%;
+}
+
+#sinusoidWindow {
+  top: 70%;
+  width: 300px;
+  height: 200px;
+  display: block;
+}
+
+.canvasHolder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1.9%;
+}
+
+.copyright {
+
+  position: absolute;
+  bottom: 1.5%;
+  right: 2%;
+  /* margin-right:auto; */
+  font-family: 'hellovetica', monospace;
+  word-spacing: 3px;
+  color: white;
+  font-size: 7px;
+  /* z-index:-10; */
+
+}
+
+.year {
+  position: absolute;
+  bottom: 1%;
+  right: 3%;
+  /* margin-right:auto; */
+  color: white;
+
+}
+
+.title-bar {
+  background-color: rgb(140, 140, 140);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  border-bottom: solid 1.5px #000000;
+}
+
+
+.title {
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.buttons {
+  display: flex;
+  gap: 5px;
+}
+
+.button {
+  background-color: #c0c0c0;
+  width: 10px;
+  height: 10px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: white black black white;
+  cursor: pointer;
+}
+
+.monotext {
+  font-family: monospace;
+  font-size: 15px;
+}
+
+.content {
+  padding: 10px;
+  font-size: 9px;
+}
+
+.win98-button {
+  background-color: #c0c0c0;
+  border: 1px solid #808080;
+  padding: 2px 5px;
+  font-family: 'hellovetica', monospace;
+  font-size: 9px;
+  cursor: pointer;
+}
+
+a {
+  color: #0077B5;
+  /* LinkedIn's blue color */
+  text-decoration: none;
+  /* Removes the underline */
+}
+
+a:hover {
+  text-decoration: underline;
+  /* Adds an underline when hovered */
+  color: #004e77;
+}
+
+.flex {
+  display: flex;
+}
+
+.iconText {
+  position: fixed;
+  font-family: 'hellovetica', monospace;
+  font-size: 7px;
+  color: white;
+  cursor: pointer;
 }
 
 .computer {
-    width:100px;
-    height:100px;
-    position: fixed;
-    top: 3px;
-    left: 0px;
-    cursor: pointer; /* Makes it look clickable */
-    /* z-index: 1000; Ensures it's above other elements */
+  width: 100px;
+  height: 100px;
+  position: fixed;
+  top: 3px;
+  left: 0px;
+  cursor: pointer;
+  /* Makes it look clickable */
+  /* z-index: 1000; Ensures it's above other elements */
 }
-.computerText {
 
-    position: fixed;
-    top: 85px;
-    left: 14px;
-    font-family: 'hellovetica', monospace;
-    font-size: 7px;
-    cursor: pointer;
+#computerText {
+
+  top: 85px;
+  left: 14px;
+
 
 }
 
 .about {
-    width: 50px;
-    height: 50px;
-    position: fixed;
-    top: 130px;
-    left: 25px;
-    cursor: pointer; /* Makes it look clickable */
-    /* z-index: 1000; Ensures it's above other elements */
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  top: 130px;
+  left: 25px;
+  cursor: pointer;
+  /* Makes it look clickable */
+  /* z-index: 1000; Ensures it's above other elements */
 }
-.aboutText {
-    position: fixed;
-    top: 185px;
-    left: 23px;
-    font-family: 'hellovetica', monospace;
-    font-size: 7px;
-    cursor: pointer;
+
+#aboutText {
+
+  top: 185px;
+  left: 23px;
+
 }
 
 .startups {
@@ -297,15 +219,15 @@ body {
   position: fixed;
   top: 220px;
   left: 25px;
-  cursor: pointer; /* Makes it look clickable */
+  cursor: pointer;
+  /* Makes it look clickable */
 }
-.startupsText {
-  position: fixed;
+
+#startupsText {
+
   top: 275px;
   left: 10px;
-  font-family: 'hellovetica', monospace;
-  font-size: 7px;
-  cursor: pointer;
+
 }
 
 .research {
@@ -314,238 +236,263 @@ body {
   position: fixed;
   top: 310px;
   left: 25px;
-  cursor: pointer; /* Makes it look clickable */
-}
-.researchText {
-  position: fixed;
-  top: 360px;
-  left: 14px;
-  font-family: 'hellovetica', monospace;
-  font-size: 7px;
   cursor: pointer;
+  /* Makes it look clickable */
 }
 
-.projects{
+#researchText {
+
+  top: 360px;
+  left: 14px;
+
+}
+
+.projects {
   width: 50px;
   height: 50px;
   position: fixed;
   top: 400px;
   left: 25px;
-  cursor: pointer; /* Makes it look clickable */
+  cursor: pointer;
+  /* Makes it look clickable */
   /* z-index: 1000; Ensures it's above other elements */
 }
 
-.projectsText {
-  position: fixed;
+#projectsText {
+
   top: 450px;
   left: 14px;
-  font-family: 'hellovetica', monospace;
-  font-size: 7px;
-  cursor: pointer;
+
 }
 
-.interests{
+.interests {
   width: 50px;
   height: 50px;
   position: fixed;
   top: 490px;
   left: 25px;
-  cursor: pointer; /* Makes it look clickable */
+  cursor: pointer;
+  /* Makes it look clickable */
   /* z-index: 1000; Ensures it's above other elements */
 }
 
-.interestsText {
-  position: fixed;
+#interestsText {
+
   top: 540px;
   left: 14px;
-  font-family: 'hellovetica', monospace;
-  font-size: 7px;
-  cursor: pointer;
+
 }
-.sinusoid{
-  width:53px;
-  height:53px;
+
+.sinusoid {
+  width: 53px;
+  height: 53px;
   position: fixed;
   top: 25px;
   left: 120px;
-  cursor: pointer; /* Makes it look clickable */
-  /* z-index: 1000; Ensures it's above other elements */
-}
-
-.sinusoidText {
-  position: fixed;
-  top: 85px;
-  left: 110px;
-  font-family: 'hellovetica', monospace;
-  font-size: 7px;
   cursor: pointer;
 }
 
-.linkedin{
-  width:55px;
-  height:55px;
+#sinusoidText {
+
+  top: 85px;
+  left: 110px;
+
+}
+
+.linkedin {
+  width: 55px;
+  height: 55px;
   position: fixed;
   top: 133px;
   left: 117px;
-  cursor: pointer; /* Makes it look clickable */
-  /* z-index: 1000; Ensures it's above other elements */
-}
-
-.linkedinText {
-  position: fixed;
-  top: 185px;
-  left: 110px;
-  font-family: 'hellovetica', monospace;
-  font-size: 7px;
   cursor: pointer;
 }
 
+#linkedinText {
 
-.twitter{
-  width:55px;
-  height:55px;
+  top: 185px;
+  left: 110px;
+
+}
+
+
+.twitter {
+  width: 55px;
+  height: 55px;
   position: fixed;
   top: 217px;
   left: 117px;
-  cursor: pointer; /* Makes it look clickable */
+  cursor: pointer;
+  /* Makes it look clickable */
   /* z-index: 1000; Ensures it's above other elements */
 }
 
-.twitterText {
-  position: fixed;
+#twitterText {
+
   top: 275px;
   left: 110px;
-  font-family: 'hellovetica', monospace;
-  font-size: 7px;
-  cursor: pointer;
+
 }
 
 
-.github{
-  width:57px;
-  height:50px;
+.github {
+  width: 57px;
+  height: 50px;
   position: fixed;
   top: 310px;
   left: 117px;
-  cursor: pointer; /* Makes it look clickable */
+  cursor: pointer;
+  /* Makes it look clickable */
   /* z-index: 1000; Ensures it's above other elements */
 }
 
-.githubText {
-  position: fixed;
+#githubText {
+
   top: 360px;
   left: 110px;
-  font-family: 'hellovetica', monospace;
-  font-size: 7px;
-  cursor: pointer;
+
 }
 
-.email{
-  width:57px;
-  height:50px;
+.email {
+  width: 57px;
+  height: 50px;
   position: fixed;
   top: 400px;
   left: 117px;
-  cursor: pointer; /* Makes it look clickable */
+  cursor: pointer;
+  /* Makes it look clickable */
   /* z-index: 1000; Ensures it's above other elements */
 }
 
-.emailText {
-  position: fixed;
+#emailText {
+
   top: 450px;
   left: 110px;
-  font-family: 'hellovetica', monospace;
-  font-size: 7px;
-  cursor: pointer;
+
 }
 
-
-
-
-.AboutWindowText{
-    /* letter-spacing: 2px; */
-    word-spacing:5px;
+.AboutWindowText {
+  /* letter-spacing: 2px; */
+  word-spacing: 5px;
 }
 
 
 .button {
-    width: 20px;   /* Width of each button */
-    height: 20px;  /* Height of each button */
-    display: inline-block;
-    text-align: center;
-    line-height: 20px;  /* Vertically centers the text/icon in the button */
-    /* Add other styles as needed */
+  width: 20px;
+  /* Width of each button */
+  height: 20px;
+  /* Height of each button */
+  display: inline-block;
+  text-align: center;
+  line-height: 20px;
+  /* Vertically centers the text/icon in the button */
+  /* Add other styles as needed */
 }
 
-.contentItem{
-    cursor: pointer;
-    display:flex;
+.close-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.contentContainer{
-    display:flex;
-    gap:50px;
-    /* flex-direction:column;
+.contentItem {
+  cursor: pointer;
+  display: flex;
+}
+
+.contentContainer {
+  display: flex;
+  gap: 50px;
+  /* flex-direction:column;
     align-items:center;
     justify-content:center;
     gap:10px;
     padding:10px; */
 }
-.phbdImage{
-    margin-top:8%;
-    width:92px;
-    height:120px;
-    border: 1.5px solid;
-    border-color: white black black white;
-}
-.mainWindow, .aboutWindow, .startupsWindow, .researchWindow, .projectsWindow, .interestsWindow {
-  z-index: 1; /* Or another initial value, but make sure currentZIndex starts higher */
+
+.phbdImage {
+  margin-top: 8%;
+  width: 92px;
+  height: 120px;
+  border: 1.5px solid;
+  border-color: white black black white;
 }
 
-.positioner{
-  position:absolute;
-  top:0px;
-  right:0px;
+.mainWindow,
+.aboutWindow,
+.startupsWindow,
+.researchWindow,
+.projectsWindow,
+.interestsWindow {
+  z-index: 1;
+  /* Or another initial value, but make sure currentZIndex starts higher */
+}
+
+.positioner {
+  position: absolute;
+  top: 0px;
+  right: 0px;
   /* setting the initial opacity to 1, which is fully visible */
   opacity: 1;
   /* adding a transition of 3 seconds for the opacity */
   transition: opacity 3s;
-  z-index:-10;
+  z-index: -10;
 }
 
 .image-container {
-  position: relative; /* This is important so the child absolute positioning is relative to this container */
-  width: 230px; /* or whatever width you want */
-  height: 150px; /* or whatever height you want */
-  overflow: hidden; /* To make sure the image and text stay within the bounds of the container */
-  color:white;
-  word-spacing:3px;
-  font-size:8px;
+  position: relative;
+  /* This is important so the child absolute positioning is relative to this container */
+  width: 230px;
+  /* or whatever width you want */
+  height: 150px;
+  /* or whatever height you want */
+  overflow: hidden;
+  /* To make sure the image and text stay within the bounds of the container */
+  color: white;
+  word-spacing: 3px;
+  font-size: 8px;
 }
 
 .image-container img {
-  width: 100%; /* To make the image take the full width of the container */
-  height: 100%; /* To make the image take the full height of the container */
+  width: 100%;
+  /* To make the image take the full width of the container */
+  height: 100%;
+  /* To make the image take the full height of the container */
 }
 
 .overlay-text-1 {
-  font-family: "hellovetica",'Courier New', Courier, monospace;
-  position: absolute; /* This takes the text out of the document flow and positions it over the image */
-  bottom: 33px; /* Distance from the bottom of the container */
-  left: 26px; /* Distance from the left of the container */
-  padding: 5px; /* Spacing around the text */
+  font-family: "hellovetica", 'Courier New', Courier, monospace;
+  position: absolute;
+  /* This takes the text out of the document flow and positions it over the image */
+  bottom: 33px;
+  /* Distance from the bottom of the container */
+  left: 26px;
+  /* Distance from the left of the container */
+  padding: 5px;
+  /* Spacing around the text */
 }
+
 .overlay-text-2 {
-  font-family: "hellovetica",'Courier New', Courier, monospace;
-  position: absolute; /* This takes the text out of the document flow and positions it over the image */
-  bottom: 53px; /* Distance from the bottom of the container */
-  left: 26px; /* Distance from the left of the container */
-  padding: 5px; /* Spacing around the text */
+  font-family: "hellovetica", 'Courier New', Courier, monospace;
+  position: absolute;
+  /* This takes the text out of the document flow and positions it over the image */
+  bottom: 53px;
+  /* Distance from the bottom of the container */
+  left: 26px;
+  /* Distance from the left of the container */
+  padding: 5px;
+  /* Spacing around the text */
 }
+
 .overlay-text-3 {
-  font-family: "hellovetica",'Courier New', Courier, monospace;
-  word-spacing:2px;  position: absolute; /* This takes the text out of the document flow and positions it over the image */
-  bottom: 74px; /* Distance from the bottom of the container */
-  left: 26px; /* Distance from the left of the container */
-  padding: 5px; /* Spacing around the text */
+  font-family: "hellovetica", 'Courier New', Courier, monospace;
+  word-spacing: 2px;
+  position: absolute;
+  /* This takes the text out of the document flow and positions it over the image */
+  bottom: 74px;
+  /* Distance from the bottom of the container */
+  left: 26px;
+  /* Distance from the left of the container */
+  padding: 5px;
+  /* Spacing around the text */
 }
