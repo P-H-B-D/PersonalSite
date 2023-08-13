@@ -25,7 +25,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 10000); // the delay of 10 seconds
 
 
-    const globalsMap = [
+    //To define additional windows, simply add them to the globalsMap with associated info. 
+    const globalsMap = [ 
         { icon:".computer", window:".mainWindow", titlebar: '.title-bar', closebtn: '.close-btn',mainWindowLabel: null},
         { icon:".about", window:".aboutWindow", titlebar: '.title-bar-about', closebtn: '.close-btn-about', mainWindowLabel: "AboutText"},
         { icon:".startups", window:".startupsWindow", titlebar: '.title-bar-startups', closebtn: '.close-btn-startups', mainWindowLabel: "StartupsText"},
@@ -40,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var currentZIndex = 1; // Initialize with 0 or with the highest z-index you have on your page.
 
 
-    // globalMap forEach loop that sets up listeners for each of the following actions:
+    // globalMap forEach loop that sets up listeners for core window interaction functionality:
     // 1) Icon Doubleclick -> open window
     // 2) Element focus (clicking on window -> bring to foreground)
     // 3) Dragging 
@@ -57,12 +58,13 @@ document.addEventListener('DOMContentLoaded', function() {
         triggerElem.addEventListener('dblclick', function() {
             if (targetElem.style.display === 'none' || !targetElem.style.display) {
                 targetElem.style.display = 'block';
+                bringToFront(targetElem);
+            }
+            else{
+                bringToFront(targetElem); // bring to front if already displayed.
             }
         });
 
-
-        
-        
 
 
         //Dragging
@@ -110,7 +112,11 @@ document.addEventListener('DOMContentLoaded', function() {
             triggerElem.addEventListener('click', function() {
                 if (targetElem.style.display === 'none' || !targetElem.style.display) {
                     targetElem.style.display = 'block';
+                    bringToFront(targetElem);
                 } 
+                else{ // Bring to front if the window is already displayed
+                    bringToFront(targetElem);
+                }
             });
         }
 
@@ -120,15 +126,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // For mouse behavior
         triggerElem.addEventListener('mousedown', function(event) {
-            currentZIndex++;
-            triggerElem.style.zIndex=currentZIndex;
-        
+            bringToFront(triggerElem);
         });
 
         // For touch behavior 
         triggerElem.addEventListener('touchstart', function(event) {
-            currentZIndex++;
-            triggerElem.style.zIndex=currentZIndex;
+            bringToFront(triggerElem);
         });
         
 
@@ -141,6 +144,14 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('okButton').addEventListener('click', function() {
         windowElem.style.display = 'none';
     });
+
+
+    // Helper Functions:
+
+    function bringToFront(target){
+        currentZIndex++;
+        target.style.zIndex=currentZIndex;
+    }
 
 
     function preventDefaultBehavior(e) {
