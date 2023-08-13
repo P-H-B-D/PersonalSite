@@ -1,89 +1,73 @@
 
 
 document.addEventListener('DOMContentLoaded', function() {
+    /*
+
+    ANALYTICS SECTION
+
+    */
+
+
     sendAnalytics(); // remove if you don't have analytics to send.
 
-    //Maps icons to their respective window element names.
-    const iconsMap = {
-        '.computer': '.mainWindow',
-        '.about': '.aboutWindow',
-        '.startups': '.startupsWindow',
-        '.research': '.researchWindow',
-        '.projects': '.projectsWindow',
-        '.interests': '.interestsWindow',
-        '.sinusoid': '.sinusoidWindow'
-    };
 
-    //Double click icon functionality
+    /*
 
-    Object.entries(iconsMap).forEach(([icon, window]) => { 
-        const triggerElem = document.querySelector(icon);
-        const targetElem = document.querySelector(window);
+    EVENT LISTENER SECTION
+
+    */
+
+
+    // Info text fade
+    setTimeout(function() { 
+        var element = document.querySelector('.positioner');
+        element.style.opacity = '0'; // set opacity to 0, which will fade out the div over 3 seconds
+    }, 10000); // the delay of 10 seconds
+
+
+    const globalsMap = [
+        { icon:".computer", window:".mainWindow", titlebar: '.title-bar', closebtn: '.close-btn',mainWindowLabel: null},
+        { icon:".about", window:".aboutWindow", titlebar: '.title-bar-about', closebtn: '.close-btn-about', mainWindowLabel: "AboutText"},
+        { icon:".startups", window:".startupsWindow", titlebar: '.title-bar-startups', closebtn: '.close-btn-startups', mainWindowLabel: "StartupsText"},
+        { icon:".research", window:".researchWindow", titlebar: '.title-bar-research', closebtn: '.close-btn-research', mainWindowLabel: "ResearchText"},
+        { icon:".projects", window:".projectsWindow", titlebar: '.title-bar-projects', closebtn: '.close-btn-projects', mainWindowLabel: "ProjectsText"},
+        { icon:".interests", window:".interestsWindow", titlebar: '.title-bar-interests', closebtn: '.close-btn-interests', mainWindowLabel: "InterestsText"},
+        { icon:".sinusoid", window:".sinusoidWindow", titlebar: '.title-bar-sinusoid', closebtn: '.close-btn-sinusoid', mainWindowLabel: null},
+    ];
+
+    var offsetX, offsetY, isDragging = false;
+    var currentDraggingElem = null; // This will keep track of which element we're dragging
+    var currentZIndex = 1; // Initialize with 0 or with the highest z-index you have on your page.
+
+
+    // globalMap forEach loop that sets up listeners for each of the following actions:
+    // 1) Icon Doubleclick -> open window
+    // 2) Element focus (clicking on window -> bring to foreground)
+    // 3) Dragging 
+    // 4) Close button pressed -> hide window
+    // 5) Main/landing window text pressed -> open window
+
+
+    globalsMap.forEach(({icon,window,titlebar,closebtn,mainWindowLabel})=>{
+
+        //Double click icon functionality
+        var triggerElem = document.querySelector(icon);
+        var targetElem = document.querySelector(window);
+        
         triggerElem.addEventListener('dblclick', function() {
             if (targetElem.style.display === 'none' || !targetElem.style.display) {
                 targetElem.style.display = 'block';
             }
         });
-    });
 
 
-    // Ok Button on main window
-    var windowElem = document.querySelector('.mainWindow');
-
-    document.getElementById('okButton').addEventListener('click', function() {
-        windowElem.style.display = 'none';
-    });
+        
+        
 
 
-
-    // Maps title bars to their respective windows
-    const titlebarMap = {
-        '.title-bar': '.mainWindow',
-        '.title-bar-about': '.aboutWindow',
-        '.title-bar-startups': '.startupsWindow',
-        '.title-bar-research': '.researchWindow',
-        '.title-bar-projects': '.projectsWindow',
-        '.title-bar-interests': '.interestsWindow',
-        '.title-bar-sinusoid': '.sinusoidWindow'
-    };
-
-
-    function preventDefaultBehavior(e) {
-        e.preventDefault();
-    }
-
-    function bringToFront(event, element) {
-        currentZIndex++; // Increment the current z-index
-        element.style.zIndex = currentZIndex; // Assign the incremented z-index to the clicked window
-    }
-
-    
-    // If the entire window is clicked, bring to front
-    Object.entries(titlebarMap).forEach(([titlebar, window]) => { 
-        const triggerElem = document.querySelector(window);
-
-        // For mouse behavior
-        triggerElem.addEventListener('mousedown', function(event) {
-            bringToFront(event,triggerElem);
-        });
-
-        // For touch behavior 
-        triggerElem.addEventListener('touchstart', function(event) {
-            bringToFront(event,triggerElem);
-        });
-
-    });
-
-
-
-    var offsetX, offsetY, isDragging = false;
-    var currentDraggingElem = null; // This will keep track of which element we're dragging
-
-    //Dragging Mapping (titlebar -> window)
-    Object.entries(titlebarMap).forEach(([titlebar, window]) => { 
-
-        const triggerElem = document.querySelector(titlebar);
-        const targetElem = document.querySelector(window);
+        //Dragging
+        triggerElem = document.querySelector(titlebar);
+        targetElem = document.querySelector(window);
 
         // For mouse behavior
         triggerElem.addEventListener('mousedown', function(event) {
@@ -101,10 +85,67 @@ document.addEventListener('DOMContentLoaded', function() {
             startDragging(event, targetElem);
         });
 
+
+        //Closebtn mapping
+        triggerElem = document.querySelector(closebtn);
+        targetElem = document.querySelector(window);
+
+        //close btn clicked on dekstop
+        triggerElem.addEventListener('click', function() {
+            targetElem.style.display = 'none';
+        });
+
+        //close btn tapped on mobile
+        triggerElem.addEventListener('touchstart', function() {
+            targetElem.style.display = 'none';
+        });
+
+
+        //Page launch from main window text mapping
+        if(mainWindowLabel != null){
+
+            triggerElem = document.getElementById(mainWindowLabel);
+            targetElem = document.querySelector(window);
+
+            triggerElem.addEventListener('click', function() {
+                if (targetElem.style.display === 'none' || !targetElem.style.display) {
+                    targetElem.style.display = 'block';
+                } 
+            });
+        }
+
+
+        //Brings window to front if clicked
+        triggerElem = document.querySelector(window);
+
+        // For mouse behavior
+        triggerElem.addEventListener('mousedown', function(event) {
+            currentZIndex++;
+            triggerElem.style.zIndex=currentZIndex;
+        
+        });
+
+        // For touch behavior 
+        triggerElem.addEventListener('touchstart', function(event) {
+            currentZIndex++;
+            triggerElem.style.zIndex=currentZIndex;
+        });
+        
+
+    })
+    
+
+    // Ok Button on main window
+    var windowElem = document.querySelector('.mainWindow');
+
+    document.getElementById('okButton').addEventListener('click', function() {
+        windowElem.style.display = 'none';
     });
 
 
-    var currentZIndex = 0; // Initialize with 0 or with the highest z-index you have on your page.
+    function preventDefaultBehavior(e) {
+        e.preventDefault();
+    }
 
     function startDragging(event, element) {
         document.addEventListener('mousemove', preventDefaultBehavior);
@@ -114,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function() {
         offsetX = event.clientX - element.getBoundingClientRect().left;
         offsetY = event.clientY - element.getBoundingClientRect().top;
 
-        currentZIndex++; // Increment the current z-index
+        // currentZIndex++; // Increment the current z-index
         currentDraggingElem.style.zIndex = currentZIndex; // Assign the incremented z-index to the dragged window
 
         document.addEventListener('mousemove', onMouseMove);
@@ -154,62 +195,17 @@ document.addEventListener('DOMContentLoaded', function() {
         document.removeEventListener('touchend', onMouseUp);
     }
 
-    //Close button events
-    const closebuttonMap = {
-        '.close-btn': '.mainWindow',
-        '.close-btn-about': '.aboutWindow',
-        '.close-btn-startups': '.startupsWindow',
-        '.close-btn-research': '.researchWindow',
-        '.close-btn-projects': '.projectsWindow',
-        '.close-btn-interests': '.interestsWindow',
-        '.close-btn-sinusoid': '.sinusoidWindow'
-    };
 
-    //Dragging Mapping (titlebar -> window)
-    Object.entries(closebuttonMap).forEach(([closebtn, window]) => { 
-
-        const triggerElem = document.querySelector(closebtn);
-        const targetElem = document.querySelector(window);
-
-        //close btn clicked on dekstop
-        triggerElem.addEventListener('click', function() {
-            targetElem.style.display = 'none';
-        });
-
-        //close btn tapped on mobile
-        triggerElem.addEventListener('touchstart', function() {
-            targetElem.style.display = 'none';
-        });
-
-    });
-
-    const textwindowMap = {
-        'AboutText': '.aboutWindow',
-        'StartupsText': '.startupsWindow',
-        'ResearchText': '.researchWindow',
-        'ProjectsText': '.projectsWindow',
-        'InterestsText': '.interestsWindow',
-    };
-
-    // Main window text description -> pages launch
-    Object.entries(textwindowMap).forEach(([text, window]) => { 
-
-        const triggerElem = document.getElementById(text);
-        const targetElem = document.querySelector(window);
-
-        triggerElem.addEventListener('click', function() {
-            if (targetElem.style.display === 'none' || !targetElem.style.display) {
-                targetElem.style.display = 'block';
-            } 
-        });
-    });
-
-    // Info text fade
-    setTimeout(function() { 
-        var element = document.querySelector('.positioner');
-        element.style.opacity = '0'; // set opacity to 0, which will fade out the div over 3 seconds
-    }, 10000); // the delay of 10 seconds
     
+
+    /*
+
+    ANIMATION SECTION
+
+    */
+
+
+
 
     //Sinusoid code
     const canvas = document.getElementById("canvas");
