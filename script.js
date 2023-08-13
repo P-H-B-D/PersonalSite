@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', function() {
         element.style.opacity = '0'; // set opacity to 0, which will fade out the div over 3 seconds
     }, 10000); // the delay of 10 seconds
 
-
     //To define additional windows, simply add them to the globalsMap with associated info. 
     const globalsMap = [ 
         { icon:".computer", window:"mainWindow", titlebar: 'title-bar-main', closebtn: 'close-btn-main',mainWindowLabel: null},
@@ -139,7 +138,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
 
     // Ok Button on main window
-    var windowElem = document.querySelector('.mainWindow');
+    var windowElem = document.getElementById('mainWindow');
+    // var windowElem= document.querySelector("win98-button");
 
     document.getElementById('okButton').addEventListener('click', function() {
         windowElem.style.display = 'none';
