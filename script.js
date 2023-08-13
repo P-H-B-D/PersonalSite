@@ -57,6 +57,25 @@ document.addEventListener('DOMContentLoaded', function() {
         element.style.zIndex = currentZIndex; // Assign the incremented z-index to the clicked window
     }
 
+    
+    // If the entire window is clicked, bring to front
+    Object.entries(titlebarMap).forEach(([titlebar, window]) => { 
+        const triggerElem = document.querySelector(window);
+
+        // For mouse behavior
+        triggerElem.addEventListener('mousedown', function(event) {
+            bringToFront(event,triggerElem);
+        });
+
+        // For touch behavior 
+        triggerElem.addEventListener('touchstart', function(event) {
+            bringToFront(event,triggerElem);
+        });
+
+    });
+
+
+
     var offsetX, offsetY, isDragging = false;
     var currentDraggingElem = null; // This will keep track of which element we're dragging
 
@@ -172,7 +191,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'InterestsText': '.interestsWindow',
     };
 
-    // Main window text icons -> pages launch
+    // Main window text description -> pages launch
     Object.entries(textwindowMap).forEach(([text, window]) => { 
 
         const triggerElem = document.getElementById(text);
