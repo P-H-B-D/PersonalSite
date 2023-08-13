@@ -3,166 +3,86 @@
 document.addEventListener('DOMContentLoaded', function() {
     sendAnalytics(); // remove if you don't have analytics to send.
 
-    // Desktop Icons 
+    //Maps icons to their respective window element names.
+    const iconsMap = {
+        '.computer': '.mainWindow',
+        '.about': '.aboutWindow',
+        '.startups': '.startupsWindow',
+        '.research': '.researchWindow',
+        '.projects': '.projectsWindow',
+        '.interests': '.interestsWindow',
+        '.sinusoid': '.sinusoidWindow'
+    };
+
+    //Double click icon functionality
+
+    Object.entries(iconsMap).forEach(([icon, window]) => { 
+        const triggerElem = document.querySelector(icon);
+        const targetElem = document.querySelector(window);
+        triggerElem.addEventListener('dblclick', function() {
+            if (targetElem.style.display === 'none' || !targetElem.style.display) {
+                targetElem.style.display = 'block';
+            }
+        });
+    });
+
+
+    // Ok Button on main window
     var windowElem = document.querySelector('.mainWindow');
-    var titleBarElem = document.querySelector('.title-bar');
 
-    var computerElem = document.querySelector('.computer');
-    var aboutElem= document.querySelector('.about');
-    var startupsElem= document.querySelector('.startups');
-    var researchElem= document.querySelector('.research');
-    var projectsElem= document.querySelector('.projects');
-    var interestsElem= document.querySelector('.interests');
-    var sinusoidElem= document.querySelector('.sinusoid');
+    document.getElementById('okButton').addEventListener('click', function() {
+        windowElem.style.display = 'none';
+    });
 
-    // const elementsMap = {
-    // '.computer': '.mainWindow',
-    // '.about': '.windowElemAbout',
-    // '.startups': '.windowElemStartups',
-    // '.research': '.windowElemResearch',
-    // '.projects': '.windowElemProjects',
-    // '.interests': '.windowElemInterests',
-    // '.sinusoid': '.windowElemSinusoid'
-    // };
 
-    // Object.entries(elementsMap).forEach(([triggerElemSelector, targetElemSelector]) => {
-    //     const triggerElem = document.querySelector(triggerElemSelector);
-    //     const targetElem = document.querySelector(targetElemSelector);
-        
-    //     triggerElem.addEventListener('dblclick', function() {
-    //         if (targetElem.style.display === 'none' || !targetElem.style.display) {
-    //             targetElem.style.display = 'block';
-    //         }
-    //     });
-    // });
 
-    // Windows + Title Bars
-    var titleBarElemAbout= document.querySelector('.title-bar-about');
-    var windowElemAbout = document.querySelector('.aboutWindow');
-
-    var titleBarElemStartups= document.querySelector('.title-bar-startups');
-    var windowElemStartups = document.querySelector('.startupsWindow');
-
-    var titleBarElemResearch= document.querySelector('.title-bar-research');
-    var windowElemResearch = document.querySelector('.researchWindow');
-
-    var titleBarElemProjects= document.querySelector('.title-bar-projects');
-    var windowElemProjects = document.querySelector('.projectsWindow');
-
-    var titleBarElemInterests= document.querySelector('.title-bar-interests');
-    var windowElemInterests = document.querySelector('.interestsWindow');
-
-    var titleBarElemSinusoid= document.querySelector('.title-bar-sinusoid');
-    var windowElemSinusoid = document.querySelector('.sinusoidWindow');
-
+    // Maps title bars to their respective windows
+    const titlebarMap = {
+        '.title-bar': '.mainWindow',
+        '.title-bar-about': '.aboutWindow',
+        '.title-bar-startups': '.startupsWindow',
+        '.title-bar-research': '.researchWindow',
+        '.title-bar-projects': '.projectsWindow',
+        '.title-bar-interests': '.interestsWindow',
+        '.title-bar-sinusoid': '.sinusoidWindow'
+    };
 
 
     function preventDefaultBehavior(e) {
         e.preventDefault();
     }
+
     function bringToFront(event, element) {
         currentZIndex++; // Increment the current z-index
         element.style.zIndex = currentZIndex; // Assign the incremented z-index to the clicked window
     }
 
-
     var offsetX, offsetY, isDragging = false;
     var currentDraggingElem = null; // This will keep track of which element we're dragging
 
-    titleBarElem.addEventListener('mousedown', function(event) {
-        startDragging(event, windowElem);
-    });
+    //Dragging Mapping (titlebar -> window)
+    Object.entries(titlebarMap).forEach(([titlebar, window]) => { 
 
-    titleBarElemAbout.addEventListener('mousedown', function(event) {
-        startDragging(event, windowElemAbout);
-    });
+        const triggerElem = document.querySelector(titlebar);
+        const targetElem = document.querySelector(window);
 
-    titleBarElemStartups.addEventListener('mousedown', function(event) {
-        startDragging(event, windowElemStartups);
-    });
-    titleBarElemResearch.addEventListener('mousedown', function(event) {
-        startDragging(event, windowElemResearch);
-    });
-    titleBarElemProjects.addEventListener('mousedown', function(event) {
-        startDragging(event, windowElemProjects);
-    });
-    titleBarElemInterests.addEventListener('mousedown', function(event) {
-        startDragging(event, windowElemInterests);
-    });
-    titleBarElemSinusoid.addEventListener('mousedown', function(event) {
-        startDragging(event, windowElemSinusoid);
-    });
+        // For mouse behavior
+        triggerElem.addEventListener('mousedown', function(event) {
+            startDragging(event, targetElem);
+        });
 
-
-    titleBarElem.addEventListener('touchstart', function(event) {
-        // Prevent default touch behavior
-        event.preventDefault();
-    
-        // Use changedTouches[0] to get the first touch point's properties
-        event.clientX = event.changedTouches[0].clientX;
-        event.clientY = event.changedTouches[0].clientY;
-        startDragging(event, windowElem);
-    });
-
-    titleBarElemAbout.addEventListener('touchstart', function(event) {
-        // Prevent default touch behavior
-        event.preventDefault();
-
-        // Use changedTouches[0] to get the first touch point's properties
-        event.clientX = event.changedTouches[0].clientX;
-        event.clientY = event.changedTouches[0].clientY;
-        startDragging(event, windowElemAbout);
-    });
-
-    titleBarElemStartups.addEventListener('touchstart', function(event) {
-        // Prevent default touch behavior
-        event.preventDefault();
-
-        // Use changedTouches[0] to get the first touch point's properties
-        event.clientX = event.changedTouches[0].clientX;
-        event.clientY = event.changedTouches[0].clientY;
-        startDragging(event, windowElemStartups);
-    });
-
-    titleBarElemResearch.addEventListener('touchstart', function(event) {
-        // Prevent default touch behavior
-        event.preventDefault();
-
-        // Use changedTouches[0] to get the first touch point's properties
-        event.clientX = event.changedTouches[0].clientX;
-        event.clientY = event.changedTouches[0].clientY;
-        startDragging(event, windowElemResearch);
-    });
-
-    titleBarElemProjects.addEventListener('touchstart', function(event) {
-        // Prevent default touch behavior
-        event.preventDefault();
-
-        // Use changedTouches[0] to get the first touch point's properties
-        event.clientX = event.changedTouches[0].clientX;
-        event.clientY = event.changedTouches[0].clientY;
-        startDragging(event, windowElemProjects);
-    });
-
-    titleBarElemInterests.addEventListener('touchstart', function(event) {
-        // Prevent default touch behavior
-        event.preventDefault();
-
-        // Use changedTouches[0] to get the first touch point's properties
-        event.clientX = event.changedTouches[0].clientX;
-        event.clientY = event.changedTouches[0].clientY;
-        startDragging(event, windowElemInterests);
-    });
-    titleBarElemSinusoid.addEventListener('touchstart', function(event) {
-        // Prevent default touch behavior
-        event.preventDefault();
+        // For touch behavior 
+        triggerElem.addEventListener('touchstart', function(event) {
+            // Prevent default touch behavior (text highlighting)
+            event.preventDefault();
         
-        // Use changedTouches[0] to get the first touch point's properties
-        event.clientX = event.changedTouches[0].clientX;
-        event.clientY = event.changedTouches[0].clientY;
-        startDragging(event, windowElemSinusoid);
-    });
+            // Use changedTouches[0] to get the first touch point's properties
+            event.clientX = event.changedTouches[0].clientX;
+            event.clientY = event.changedTouches[0].clientY;
+            startDragging(event, targetElem);
+        });
 
+    });
 
 
     var currentZIndex = 0; // Initialize with 0 or with the highest z-index you have on your page.
@@ -204,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
         onMouseMove(event); // You can reuse the logic from the mouse move
     }
 
-    function onMouseUp() {
+    function onMouseUp() { // Cleans up event listeners after dragging is complete
         isDragging = false;
         currentDraggingElem = null;
         document.removeEventListener('mousemove', preventDefaultBehavior);
@@ -215,163 +135,63 @@ document.addEventListener('DOMContentLoaded', function() {
         document.removeEventListener('touchend', onMouseUp);
     }
 
+    //Close button events
+    const closebuttonMap = {
+        '.close-btn': '.mainWindow',
+        '.close-btn-about': '.aboutWindow',
+        '.close-btn-startups': '.startupsWindow',
+        '.close-btn-research': '.researchWindow',
+        '.close-btn-projects': '.projectsWindow',
+        '.close-btn-interests': '.interestsWindow',
+        '.close-btn-sinusoid': '.sinusoidWindow'
+    };
 
-    document.getElementById('okButton').addEventListener('click', function() {
-        windowElem.style.display = 'none';
-    });
+    //Dragging Mapping (titlebar -> window)
+    Object.entries(closebuttonMap).forEach(([closebtn, window]) => { 
 
-    // document.getElementById('cancelButton').addEventListener('click', function() {
-    //     windowElem.style.display = 'none';
-    // });
-    computerElem.addEventListener('dblclick', function() {
-        if (windowElem.style.display === 'none' || !windowElem.style.display) {
-            windowElem.style.display = 'block';
-        } 
-    });
-    aboutElem.addEventListener('dblclick', function() {
-        if (windowElemAbout.style.display === 'none' || !windowElemAbout.style.display) {
-            windowElemAbout.style.display = 'block';
-        }
-    });
-    startupsElem.addEventListener('dblclick', function() {
-        if (windowElemStartups.style.display === 'none' || !windowElemStartups.style.display) {
-            windowElemStartups.style.display = 'block';
-        }
-    });
-    researchElem.addEventListener('dblclick', function() {
-        if (windowElemResearch.style.display === 'none' || !windowElemResearch.style.display) {
-            windowElemResearch.style.display = 'block';
-        }
-    });
-    projectsElem.addEventListener('dblclick', function() {
-        if (windowElemProjects.style.display === 'none' || !windowElemProjects.style.display) {
-            windowElemProjects.style.display = 'block';
-        }
-    });
-    interestsElem.addEventListener('dblclick', function() {
-        if (windowElemInterests.style.display === 'none' || !windowElemInterests.style.display) {
-            windowElemInterests.style.display = 'block';
-        }
-    });
-    sinusoidElem.addEventListener('dblclick', function() {
-        if (windowElemSinusoid.style.display === 'none' || !windowElemSinusoid.style.display) {
-            windowElemSinusoid.style.display = 'block';
-        }
+        const triggerElem = document.querySelector(closebtn);
+        const targetElem = document.querySelector(window);
+
+        //close btn clicked on dekstop
+        triggerElem.addEventListener('click', function() {
+            targetElem.style.display = 'none';
+        });
+
+        //close btn tapped on mobile
+        triggerElem.addEventListener('touchstart', function() {
+            targetElem.style.display = 'none';
+        });
+
     });
 
+    const textwindowMap = {
+        'AboutText': '.aboutWindow',
+        'StartupsText': '.startupsWindow',
+        'ResearchText': '.researchWindow',
+        'ProjectsText': '.projectsWindow',
+        'InterestsText': '.interestsWindow',
+    };
 
-    //Desktop Touch Events
-    document.querySelector('.close-btn').addEventListener('click', function() {
-        windowElem.style.display = 'none';
-    });
-    document.querySelector('.close-btn-about').addEventListener('click', function() {
-        windowElemAbout.style.display = 'none';
-    });
-    document.querySelector('.close-btn-startups').addEventListener('click', function() {
-        windowElemStartups.style.display = 'none';
-    });
-    document.querySelector('.close-btn-research').addEventListener('click', function() {
-        windowElemResearch.style.display = 'none';
-    });
-    document.querySelector('.close-btn-projects').addEventListener('click', function() {
-        windowElemProjects.style.display = 'none';
-    });
-    document.querySelector('.close-btn-interests').addEventListener('click', function() {
-        windowElemInterests.style.display = 'none';
-    });
-    document.querySelector('.close-btn-sinusoid').addEventListener('click', function() {
-        windowElemSinusoid.style.display = 'none';
+    // Main window text icons -> pages launch
+    Object.entries(textwindowMap).forEach(([text, window]) => { 
+
+        const triggerElem = document.getElementById(text);
+        const targetElem = document.querySelector(window);
+
+        triggerElem.addEventListener('click', function() {
+            if (targetElem.style.display === 'none' || !targetElem.style.display) {
+                targetElem.style.display = 'block';
+            } 
+        });
     });
 
-
-    // Mobile Touch Events
-    document.querySelector('.close-btn').addEventListener('touchstart', function() {
-        windowElem.style.display = 'none';
-    });
-    document.querySelector('.close-btn-about').addEventListener('touchstart', function() {
-        windowElemAbout.style.display = 'none';
-    });
-    document.querySelector('.close-btn-startups').addEventListener('touchstart', function() {
-        windowElemStartups.style.display = 'none';
-    });
-    document.querySelector('.close-btn-research').addEventListener('touchstart', function() {
-        windowElemResearch.style.display = 'none';
-    });
-    document.querySelector('.close-btn-projects').addEventListener('touchstart', function() {
-        windowElemProjects.style.display = 'none';
-    });
-    document.querySelector('.close-btn-interests').addEventListener('touchstart', function() {
-        windowElemInterests.style.display = 'none';
-    });
-    document.querySelector('.close-btn-sinusoid').addEventListener('touchstart', function() {
-        windowElemSinusoid.style.display = 'none';
-    });
-
-
-
-
-    document.getElementById("AboutText").addEventListener('click', function() {
-        if (windowElemAbout.style.display === 'none' || !windowElemAbout.style.display) {
-            windowElemAbout.style.display = 'block';
-        } 
-    });
-    document.getElementById("StartupsText").addEventListener('click', function() {
-        if (windowElemStartups.style.display === 'none' || !windowElemStartups.style.display) {
-            windowElemStartups.style.display = 'block';
-       
-        } 
-    });
-    document.getElementById("ResearchText").addEventListener('click', function() {
-        if (windowElemResearch.style.display === 'none' || !windowElemResearch.style.display) {
-            windowElemResearch.style.display = 'block';
-
-        } 
-    });
-    document.getElementById("ProjectsText").addEventListener('click', function() {
-        if (windowElemProjects.style.display === 'none' || !windowElemProjects.style.display) {
-            windowElemProjects.style.display = 'block';
-       
-        } 
-    });
-    document.getElementById("InterestsText").addEventListener('click', function() {
-        if (windowElemInterests.style.display === 'none' || !windowElemInterests.style.display) {
-            windowElemInterests.style.display = 'block';
-            
-        } 
-    });
-
-    
-
-    windowElem.addEventListener('click', function(event) {
-        bringToFront(event, windowElem);
-    });
-    
-    windowElemAbout.addEventListener('click', function(event) {
-        bringToFront(event, windowElemAbout);
-    });
-    
-    windowElemStartups.addEventListener('click', function(event) {
-        bringToFront(event, windowElemStartups);
-    });
-    
-    windowElemResearch.addEventListener('click', function(event) {
-        bringToFront(event, windowElemResearch);
-    });
-    
-    windowElemProjects.addEventListener('click', function(event) {
-        bringToFront(event, windowElemProjects);
-    });
-    
-    windowElemInterests.addEventListener('click', function(event) {
-        bringToFront(event, windowElemInterests);
-    });
-
-    setTimeout(function() {
+    // Info text fade
+    setTimeout(function() { 
         var element = document.querySelector('.positioner');
         element.style.opacity = '0'; // set opacity to 0, which will fade out the div over 3 seconds
     }, 10000); // the delay of 10 seconds
     
-    
+
     //Sinusoid code
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
