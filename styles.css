@@ -253,11 +253,11 @@ a:hover {
 }
 
 .sinusoid {
-  width: 53px;
-  height: 53px;
+  width: 50px;
+  height: 50px;
   position: fixed;
-  top: 25px;
-  left: 120px;
+  top: 28px;
+  left: 117px;
   cursor: pointer;
 }
 
