@@ -79,26 +79,20 @@ body {
 }
 
 .copyright {
-
   position: absolute;
   bottom: 1.5%;
   right: 2%;
-  /* margin-right:auto; */
   font-family: 'hellovetica', monospace;
   word-spacing: 3px;
   color: white;
   font-size: 7px;
-  /* z-index:-10; */
-
 }
 
 .year {
   position: absolute;
   bottom: 1%;
   right: 3%;
-  /* margin-right:auto; */
   color: white;
-
 }
 
 .title-bar {
@@ -153,14 +147,12 @@ body {
 
 a {
   color: #0077B5;
-  /* LinkedIn's blue color */
   text-decoration: none;
-  /* Removes the underline */
 }
 
 a:hover {
   text-decoration: underline;
-  /* Adds an underline when hovered */
+
   color: #004e77;
 }
 
@@ -183,16 +175,11 @@ a:hover {
   top: 3px;
   left: 0px;
   cursor: pointer;
-  /* Makes it look clickable */
-  /* z-index: 1000; Ensures it's above other elements */
 }
 
 #computerText {
-
   top: 85px;
   left: 14px;
-
-
 }
 
 .about {
@@ -202,15 +189,11 @@ a:hover {
   top: 130px;
   left: 25px;
   cursor: pointer;
-  /* Makes it look clickable */
-  /* z-index: 1000; Ensures it's above other elements */
 }
 
 #aboutText {
-
   top: 185px;
   left: 23px;
-
 }
 
 .startups {
@@ -220,14 +203,11 @@ a:hover {
   top: 220px;
   left: 25px;
   cursor: pointer;
-  /* Makes it look clickable */
 }
 
 #startupsText {
-
   top: 275px;
   left: 10px;
-
 }
 
 .research {
@@ -237,14 +217,11 @@ a:hover {
   top: 310px;
   left: 25px;
   cursor: pointer;
-  /* Makes it look clickable */
 }
 
 #researchText {
-
   top: 360px;
   left: 14px;
-
 }
 
 .projects {
@@ -254,15 +231,11 @@ a:hover {
   top: 400px;
   left: 25px;
   cursor: pointer;
-  /* Makes it look clickable */
-  /* z-index: 1000; Ensures it's above other elements */
 }
 
 #projectsText {
-
   top: 450px;
   left: 14px;
-
 }
 
 .interests {
@@ -272,15 +245,11 @@ a:hover {
   top: 490px;
   left: 25px;
   cursor: pointer;
-  /* Makes it look clickable */
-  /* z-index: 1000; Ensures it's above other elements */
 }
 
 #interestsText {
-
   top: 540px;
   left: 14px;
-
 }
 
 .sinusoid {
@@ -293,10 +262,8 @@ a:hover {
 }
 
 #sinusoidText {
-
   top: 85px;
   left: 110px;
-
 }
 
 .linkedin {
@@ -309,10 +276,8 @@ a:hover {
 }
 
 #linkedinText {
-
   top: 185px;
   left: 110px;
-
 }
 
 
@@ -323,15 +288,11 @@ a:hover {
   top: 217px;
   left: 117px;
   cursor: pointer;
-  /* Makes it look clickable */
-  /* z-index: 1000; Ensures it's above other elements */
 }
 
 #twitterText {
-
   top: 275px;
   left: 110px;
-
 }
 
 
@@ -342,15 +303,11 @@ a:hover {
   top: 310px;
   left: 117px;
   cursor: pointer;
-  /* Makes it look clickable */
-  /* z-index: 1000; Ensures it's above other elements */
 }
 
 #githubText {
-
   top: 360px;
   left: 110px;
-
 }
 
 .email {
@@ -360,33 +317,24 @@ a:hover {
   top: 400px;
   left: 117px;
   cursor: pointer;
-  /* Makes it look clickable */
-  /* z-index: 1000; Ensures it's above other elements */
 }
 
 #emailText {
-
   top: 450px;
   left: 110px;
-
 }
 
 .AboutWindowText {
-  /* letter-spacing: 2px; */
   word-spacing: 5px;
 }
 
 
 .button {
   width: 20px;
-  /* Width of each button */
   height: 20px;
-  /* Height of each button */
   display: inline-block;
   text-align: center;
   line-height: 20px;
-  /* Vertically centers the text/icon in the button */
-  /* Add other styles as needed */
 }
 
 .close-btn {
@@ -403,11 +351,6 @@ a:hover {
 .contentContainer {
   display: flex;
   gap: 50px;
-  /* flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
-    padding:10px; */
 }
 
 .phbdImage {
@@ -425,29 +368,22 @@ a:hover {
 .projectsWindow,
 .interestsWindow {
   z-index: 1;
-  /* Or another initial value, but make sure currentZIndex starts higher */
 }
 
 .positioner {
   position: absolute;
   top: 0px;
   right: 0px;
-  /* setting the initial opacity to 1, which is fully visible */
   opacity: 1;
-  /* adding a transition of 3 seconds for the opacity */
   transition: opacity 3s;
   z-index: -10;
 }
 
 .image-container {
   position: relative;
-  /* This is important so the child absolute positioning is relative to this container */
   width: 230px;
-  /* or whatever width you want */
   height: 150px;
-  /* or whatever height you want */
   overflow: hidden;
-  /* To make sure the image and text stay within the bounds of the container */
   color: white;
   word-spacing: 3px;
   font-size: 8px;
@@ -455,44 +391,30 @@ a:hover {
 
 .image-container img {
   width: 100%;
-  /* To make the image take the full width of the container */
   height: 100%;
-  /* To make the image take the full height of the container */
 }
 
 .overlay-text-1 {
   font-family: "hellovetica", 'Courier New', Courier, monospace;
   position: absolute;
-  /* This takes the text out of the document flow and positions it over the image */
-  bottom: 33px;
-  /* Distance from the bottom of the container */
+  bottom: 30px;
   left: 26px;
-  /* Distance from the left of the container */
   padding: 5px;
-  /* Spacing around the text */
 }
 
 .overlay-text-2 {
   font-family: "hellovetica", 'Courier New', Courier, monospace;
   position: absolute;
-  /* This takes the text out of the document flow and positions it over the image */
   bottom: 53px;
-  /* Distance from the bottom of the container */
   left: 26px;
-  /* Distance from the left of the container */
   padding: 5px;
-  /* Spacing around the text */
 }
 
 .overlay-text-3 {
   font-family: "hellovetica", 'Courier New', Courier, monospace;
   word-spacing: 2px;
   position: absolute;
-  /* This takes the text out of the document flow and positions it over the image */
-  bottom: 74px;
-  /* Distance from the bottom of the container */
+  bottom: 90px;
   left: 26px;
-  /* Distance from the left of the container */
   padding: 5px;
-  /* Spacing around the text */
 }
