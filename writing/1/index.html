@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>PHBD.xyz – Inference at the Network Edge</title>
+</head>
+
+<body>
+    <h1> <a href="https://www.phbd.xyz/" style="color:black;">PHBD.xyz</a> </h1>
+    <h2 style="margin-bottom:0px;" ;>Experiments at the Network Edge:</h2>
+    <h2 style="margin-top:10px;" ;><i>Learnings from Trial-and-Error</i></h2>
+    <hr>
+    <p style="text-align:center;">Early Draft</p>
+    <p style="margin-bottom:5px;"><i>TL;DR</i> <br>
+        <ol><i>
+            <li>Edge inference brings server load to the client-side and can alleviate scaling headaches.</li>
+            <li>Creative edge ML deployments can create mostly serverless, self-learning systems.</li>
+            <li>Surprisingly many ML models can be brought closer to the user, if not to the edge.</li>
+        </i>
+        </ol>
+    </p>
+    <hr>
+    <p>
+        The following is a broad survey of what I've learned <a href="https://www.phbd.xyz/edgeml/">building numeral recognition in browser</a>, first by trying to rewrite <a href="https://github.com/karpathy/micrograd">Micrograd</a> in Javascript,
+        having aspirations to both train and run <a href="https://en.wikipedia.org/wiki/MNIST_database">MNIST</a> inference on the browser, failing, and discovering <a href="https://onnx.ai/">ONNX</a>.
+    </p>
+    <p>
+        I began this exploration into edge ML with the pedagogical goal of better understanding JS through a project familiar to me: writing a simple neural network library from scratch.
+        At the time, I was merely trying to brush up on my JS skills, but I have come to find running ML on the various form factors to be a fascinating challenge. Furthermore, I have been on 
+        a recent cultural crusade against JS <a href="https://en.wikipedia.org/wiki/Npm#Left-pad_incident">dependency hell</a>, and wanted to see how far I could push my abilities with no external dependencies.
+    </p>
+    <p>
+        Beyond the surprising lack of <a href="https://stackoverflow.com/questions/19620667/javascript-operator-overloading">operator overloading</a> and <a href="https://stackoverflow.com/questions/31353213/does-javascript-support-array-list-comprehensions-like-python"> concise listcomps</a>,
+        I found the rewrite of Micrograd to be very straightforward. After understanding some quirks of the language (and how to deal with the lack of numpy), the JS was nearly idiomatic. Once I had rewritten Micrograd, I ran a few training loops and successfully trained a simple neural network on toy regression and classification data, running it in the browser.
+    </p>
+    <p>
+        Success! If I could do this, surely training more complex networks (e.g. numeral recognition with MNIST) would be an easy next step, right? Unfortunately, not quite: I quickly ran into performance issues arising from <a href="https://twitter.com/el_PA_B/status/1369455312160366592?s=20">suboptimal backpropogation techniques and linalg optimization</a>.
+        Beyond this, I also started to feel the pain of constructing everything from a low-level library and moving data from point A to B without concise numpy transformations. Dependencies had won this battle, and I was left with a library that was too slow and unwieldy to train anything interesting.
+        One day I hope to return with a better grasp of Wasm or WebGL to accelerate calculations, but for this time around I found a great middle ground.
+    </p>
+    <h4>ONNX to the Rescue</h2>
+    <hr>
+    <p>
+        After a few hours of trying things and failing to find alternative approaches to model training (scouring for other Micrograd implementations that trained MNIST, exploring the idea of pretraining a network then importing model weights, transferring model weights from a higher-level library, etc.)
+        I stumbled upon <a href="https://onnx.ai/">ONNX</a>. ONNX is a universal model format that allows for the transfer of models between frameworks. Popular frameworks like PyTorch, Tensorflow, and Caffe2 all support ONNX exports and imports, and 
+        there is a variety of <a href="https://onnxruntime.ai/">optimized runtimes</a> for running pretrained models in a variety of languages. Particularly interesting to me was its <a href="https://cloudblogs.microsoft.com/opensource/2021/09/02/onnx-runtime-web-running-your-machine-learning-model-in-browser/">extensive use of Wasm + WebGL to accelerate inference in the browser</a>.
+        The ONNX runtime essential enables you to write complex networks in high level frameworks like Pytorch while retaining the flexibility of running them in diverse runtime environments, from the browser to embedded systems.
+    </p>
+    <p>
+        On the pure performance side, I was able to easily achieve under 20ms inference time on my M1 MBA for a <a href="https://github.com/Microsoft/CNTK/blob/master/Tutorials/CNTK_103D_MNIST_ConvolutionalNeuralNetwork.ipynb">~100k param CNN model</a>, and about 100ms for my iPhone. Furthermore, this is likely on a suboptimal implementation of both the neural network and the ONNX runtime implementation
+        in my client-side code. Some easily achievable latency wins could derive from: <a href="https://github.com/intel/neural-compressor/tree/master">model quantization</a>, smaller model sizes, and more parameter-efficient model architectures. I am currently loading ONNX runtime from script-tag CDN, while the current model comes out to 26KB, both of which cause negligable addition to load time.  
+    </p>
+    <p>
+        The ease of small model deployment had me thinking about what the limits of the network periphery were: How large can you get models living on the edge without killing user experience? What practical applications can be built within these constraints? What architectures get you out of these constraints?
+    </p>
+    
+    <hr>
+    <hr>
+</body>
+
+</html>

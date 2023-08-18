@@ -1,0 +1,102 @@
+@font-face {
+    font-family: 'Space Grotesk';
+    src: url('path/to/SpaceGrotesk-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+}
+
+
+a {
+    color:rgb(26, 90, 169);
+    /* Inherit text color from parent */
+    text-decoration: none;
+    /* Remove underline */
+    cursor: pointer;
+    /* Change cursor to pointer on hover */
+}
+
+body {
+    font: 110%/1.5 'Spectral', serif;
+    font-weight: 400;
+    margin: 0 auto;
+    padding: 2em;
+    text-align: left;
+    max-width: 500px;
+    font-weight: 100;
+    font-kerning: normal;
+}
+
+h1 {
+    padding: 0em;
+    margin: 0em;
+    font-family: 'Space Grotesk', sans-serif;
+    text-align: center;
+    letter-spacing: 0.3em;
+    font-weight: 300;
+    transition: letter-spacing 0.3s ease;
+    /* Add this line for the transition effect */
+}
+
+h1:hover {
+    letter-spacing: 0.5em;
+    /* Add this line to specify the new letter-spacing on hover */
+    cursor: pointer;
+}
+
+h2 {
+    padding: 0em;
+    font: 150%/1.5 'Space Grotesk', sans-serif;
+    text-align: center;
+    letter-spacing: 0.1em;
+    font-weight: 100;
+
+}
+
+h4 {
+    padding: 0em;
+    font: 150%/1.5 'Space Grotesk', sans-serif;
+    text-align: center;
+    letter-spacing: 0.1em;
+    font-weight: 100;
+
+}
+
+hr {
+    width: 75%;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.cols {
+    margin-top: 2em;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1.5em;
+
+}
+
+
+p {
+    margin: 0;
+}
+
+p+p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    text-indent: 1em;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+ol {
+    margin: 0;
+    margin-left:2em;
+    padding: 0;
+}
+
+li li {
+    margin-left: 1em;
+}

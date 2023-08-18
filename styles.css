@@ -324,6 +324,20 @@ a:hover {
   left: 110px;
 }
 
+.edgeML {
+  width: 57px;
+  height: 50px;
+  position: fixed;
+  top: 490px;
+  left: 117px;
+  cursor: pointer;
+}
+
+#edgeMLText {
+  top: 540px;
+  left: 110px;
+}
+
 .AboutWindowText {
   word-spacing: 5px;
 }
