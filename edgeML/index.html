@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" /> <!-- Prevents Caching -->
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <link rel="stylesheet" href="styles.css" target="_blank">
+    <title>PHBD.xyz – Edge ML</title>
+</head>
+
+<body>
+    <div id="bgText">
+        <div style="padding-left:25px;">
+            <p style="font-size:48px; font-weight:200;">
+                <a href="https://www.phbd.xyz/"><span class="expandText">PHBD.xyz</span></a> <br></span><br>Edge ML demo
+            </p>
+        </div>
+        <div id="featureText" style="padding-left:25px;">
+        <div>
+            <p style="font-size:18px; font-weight:200;">Fully client-side inference of pretrained CNN. </p>
+        </div>
+        <div>
+            <p style="font-size:18px; font-weight:200;">Powered by <a href= "https://github.com/onnx/onnx" style="font-weight:400;">ONNX</a>.</p>
+        </div>
+        <div>
+            <p style="font-size:18px; font-weight:200;">Draw digit (0-9).</p>
+        </div>
+        <div>
+            <p style="font-size:18px; font-weight:200;">Drag windows to reposition.</p>
+        </div>
+        <br>
+        <div id="expandtextholder">
+            <a href="https://phbd.xyz/writing/1/"><p style="font-size:19px; font-weight:400;" class="expandText2">Click here to learn more.</p></a>
+        </div>
+    </div>
+    </div>
+    <div id="draggable-window2">
+        <div id="taskbar2">
+            <p style="font-size:16px; font-family: DMSans; margin-left:20px; font-weight:500;">Draw Digit (0-9):</p>
+            <button id="logButton" style="margin:5px; margin-right:5px;">Classify</button>
+            <button id="clearButton" style="margin:5px; margin-right:25px;">Clear</button>
+        </div>
+        <canvas id="pixelCanvas" width="28" height="28"></canvas>
+    </div>
+
+    <div id="draggable-window3">
+        <div id="taskbar3">
+            <p style="font-size:16px; font-family: DMSans; margin-left:10px;">Output:</p>
+        </div>
+        <p style="font-size:16px; font-family: DMMono; margin-left:10px;">Output Class: <span id="outputNum"
+                style="font-size:23px; font-family:DMMono; font-weight:800;"></span></p>
+        <p style="font-size:14px; font-family: DMMono; margin-left:10px; ">Inference Time: <span id="outputTime"
+                style="font-size:17px; font-family:DMMono; font-weight:800;"></span><span id="inferenceLabel"></span>
+        </p>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,217 @@
+@font-face {
+    font-family: 'DMSans';
+    src: url('./DMSans-VariableFont_opsz\,wght.ttf') format('truetype');
+    /* You can include additional font formats (e.g., woff, woff2) for better compatibility */
+  }
+@font-face {
+    font-family: 'DMMono';
+    src: url('./DMMono-Regular.ttf') format('truetype');
+    /* You can include additional font formats (e.g., woff, woff2) for better compatibility */
+  }
+
+body{
+    background-color:#f1f7ff;
+}
+
+#taskbar {
+    display: flex;
+    background-color: rgb(222, 244, 254);
+    justify-content: space-between;
+    align-items: center;
+    border-bottom:#123693 2px solid;
+    /* ... */
+}
+
+#taskbar2 {
+    display: flex;
+    background-color: rgb(222, 244, 254);
+    justify-content: space-between;
+    align-items: center;
+    border-bottom:#123693 2px solid;
+    /* ... */
+}
+#taskbar3 {
+    display: flex;
+    background-color: rgb(222, 244, 254);
+    justify-content: space-between;
+    align-items: center;
+    border-bottom:#123693 2px solid;
+    /* ... */
+}
+p{
+    font-family: 'DMSans', sans-serif;
+    color:#123693;
+}
+button {
+    font-family: 'DMMono', sans-serif;
+    padding: 10px 15px;
+    margin-bottom:25px;
+    font-size: 12px;
+    cursor: pointer;
+    background-color: #123693;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+
+
+button:hover {
+    background-color: #1565c0;
+}
+
+
+#draggable-window2 {
+   
+    width: 365px;
+    height: 420px;
+    position: absolute;
+    
+    right:30%;
+    top:10%;
+    background-color: rgb(212, 240, 253);
+    border:#123693 2px solid;
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.4);
+    cursor: move;
+}
+#draggable-window3 {
+   
+    width: 250px;
+    height: 160px;
+    position: absolute;
+    left:15%;
+    bottom:10%;
+
+    background-color: rgb(212, 240, 253);
+    border:#123693 2px solid;
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.4);
+    cursor: move;
+}
+
+#pixelCanvas {
+    background-color: #f1f7ff;
+    margin-left:20px;
+    margin-top:20px;
+    width: 320px;
+    height: 320px;
+    border: 1px solid #000;
+    image-rendering: pixelated; /* Keeps pixels sharp */
+    cursor: crosshair;
+  }
+
+/* Existing CSS for neurons and connections */
+.neuron {
+    stroke: #000;
+    stroke-width: 2;
+}
+
+
+.connection {
+    stroke: #000;
+    stroke-width: 1.5;
+}
+
+/* :root {
+    --red: hsl(0, 100%, 50%);
+    --blue: hsl(240, 100%, 50%);
+    --yellow: hsl(60, 100%, 50%);
+} */
+
+.neuron {
+    stroke: #000;
+    stroke-width: 2;
+}
+
+.connection {
+    stroke: #000;
+    stroke-width: 1.5;
+}
+#parabola-window {
+    width: 700px;
+    height: 700px;
+    /* ... other styles (similar to #neural-network-container) ... */
+}
+
+
+.expandText:hover { 
+    letter-spacing: 0.7em; /* Add this line to specify the new letter-spacing on hover */
+}
+.expandText2:hover { 
+    letter-spacing: 0.5em; /* Add this line to specify the new letter-spacing on hover */
+}
+
+#expandtextholder{
+    width:470px;
+}
+
+#neural-network-container {
+    position: relative;
+}
+
+#training-status {
+    font-family:"DMMono";
+    position: absolute;
+    top: 0;
+    left:70%;
+    padding: 25px;
+    font-size: 14px;
+    font-weight: bold;
+    color:#123693;
+}
+
+#epoch {
+    font-family:"DMMono";
+    position: absolute;
+    top: 20px;
+    left:70%;
+    padding: 25px;
+    font-size: 14px;
+    font-weight: bold;
+    color:#123693;
+}
+@media (max-width: 768px) {
+    #draggable-window2 {
+      position: absolute;
+      left: 50%;
+      top: 5%;
+      transform: translateX(-50%); /* Center horizontally */
+    }
+  
+    #draggable-window3 {
+    
+      position: absolute;
+      left: 50%;
+      top: 73%;
+      transform: translateX(-50%); /* Center horizontally */
+    }
+    #bgText{
+        display:none;
+    }
+  }
+    
+  
+  a {
+    color: inherit; /* blue colors for links too */
+    text-decoration: inherit; /* no underline */
+  }
+.expandText { 
+    color:#123693;
+    text-decoration: none;
+    font-weight:150;
+    letter-spacing: 0.3em;
+    transition: letter-spacing 0.3s ease; /* Add this line for the transition effect */
+    cursor: pointer;
+}
+.expandText2 { 
+    color:#123693;
+    text-decoration: none;
+    font-weight:150;
+    letter-spacing: 0.2em;
+    transition: letter-spacing 0.3s ease; /* Add this line for the transition effect */
+    cursor: pointer;
+}
+a:-webkit-any-link {
+    text-decoration: none;
+    color:#123693;
+    cursor: pointer;
+}
