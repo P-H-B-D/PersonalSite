@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" /> <!-- Prevents Caching -->
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <link rel="stylesheet" href="styles.css" target="_blank">
+    <title>PHBD.xyz – Edge ML</title>
+</head>
+
+<body style="font-family:'Courier New', Courier, monospace; font-weight:400;">
+    <p>Edge ML: all-MiniLM-L6-v2 Embeddings via ONNX WASM runtime</p>
+    <p><i>A technical proof-of-concept for low-latency, client-side semantic vector search.</i></p>
+    <p>Please allow up to 60 seconds to load the model depending on your connection.</p>
+    <p id="loadingText">Tokenizer Loading...</p> <!-- Element to display "Loading" text -->
+    <p id="modelLoadingText">Model Loading...</p> <!-- Element to display "Loading" text -->
+    
+    <input type="text" id="userInput" placeholder="Embedding Text..." style="display:none; font-family:'Courier New', Courier, monospace;"> <!-- Textbox for user input -->
+    <button id="submitBtn" style="display:none; font-family:'Courier New', Courier, monospace;">Submit</button> <!-- Submit button to trigger main function -->
+    <p id="vectorEntries"></p>
+    <p id="inferenceTime"></p>
+    <p style="font-size:medium; font-weight:400;"><i><a style="text-decoration: none; color:navy;" href="https://www.phbd.xyz/">PHBD.xyz</a>, 2023</i></p>
+    <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

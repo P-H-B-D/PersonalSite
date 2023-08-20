@@ -1,11 +1,9 @@
 const draggableWindow2 = document.getElementById('draggable-window2');
 const canvas = document.getElementById('pixelCanvas');
-const ctx = canvas.getContext('2d');
+const ctx = canvas.getContext('2d', { willReadFrequently: true });
 let isDragging2 = false;
 let drawing = false;
 let offsetX2, offsetY2;
-
-
 
 draggableWindow2.addEventListener('mousedown', (e) => {
   if (!drawing) {
@@ -202,14 +200,29 @@ function logCanvasData() {
 
 }
 
+// Global variable to hold the session
+let session;
+
+// Function to load the model
+async function loadModel() {
+    try {
+        session = await ort.InferenceSession.create('./mnist-12.onnx');
+        console.log('model loaded');
+    } catch (e) {
+        document.write(`failed to load ONNX model: ${e}.`);
+    }
+}
+
+window.onload = loadModel;
+
 
 async function main(number) {
   try {
     //start time 
     const startTime = performance.now();
-    const session = await ort.InferenceSession.create('./mnist-12.onnx');
+    // const session = await ort.InferenceSession.create('./mnist-12.onnx');
 
-    console.log('model loaded');
+    // console.log('model loaded');
 
     const arrayLength = 784;
     var randomNumberArray = number;
