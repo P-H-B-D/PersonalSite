@@ -13,3 +13,9 @@ th, td {
     overflow: hidden;
     text-overflow: clip;
 }
+@media screen and (max-width: 768px) { 
+    /* This is a mobile breakpoint, adjust as needed */
+    .flex-container {
+        flex-direction: column;
+    }
+}
