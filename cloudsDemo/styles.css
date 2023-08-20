@@ -1,0 +1,31 @@
+.box-container {
+    display: flex;
+}
+
+.box {
+    position: relative;
+    transition: transform 0.8s ease;
+}
+
+.box-left {
+    transform: translate(-10px,25px);
+}
+
+.box-right {
+    transform: translateX(-60px);
+}
+
+.box-bottom {
+    transform: translate(-450px, 135px);
+}
+
+.box-container:hover .box-right {
+    transform: translateX(30px);
+}
+
+.box-container:hover .box-left {
+    transform: translate(-80px,25px);
+}
+.box-container:hover .box-bottom {
+    transform: translate(-460px, 175px);
+}

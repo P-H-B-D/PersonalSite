@@ -24,6 +24,24 @@
     <button id="submitBtn" style="display:none; font-family:'Courier New', Courier, monospace;">Submit</button> <!-- Submit button to trigger main function -->
     <p id="vectorEntries"></p>
     <p id="inferenceTime"></p>
+    <hr>
+    <p>Vector Search</p>
+    
+    <p id="addText"> Add: </p>
+    <form id="addForm">
+        <input type="text" id="addName" placeholder="New Person Name">
+        <button type="submit">Add</button>
+    </form>
+
+    <p id="searchText"> Search: </p>
+    <form id="searchForm">
+        <input type="text" id="searchName" placeholder="Search">
+        <button type="submit">Search</button>
+    </form>
+    
+    <p>Vector Array:</p>
+    <table id="dataTable"></table>
+    <hr>
     <p style="font-size:medium; font-weight:400;"><i><a style="text-decoration: none; color:navy;" href="https://www.phbd.xyz/">PHBD.xyz</a>, 2023</i></p>
     <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.min.js"></script>
     <script src="script.js"></script>

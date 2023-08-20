@@ -1,0 +1,15 @@
+table {
+    border-collapse: collapse;
+    max-width:20%;
+
+    table-layout: fixed;
+    overflow:hidden;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: clip;
+}
