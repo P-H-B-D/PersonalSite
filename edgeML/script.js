@@ -114,8 +114,6 @@ function drawPixel(x, y, alpha = 1) {
   }
 }
 
-
-
 canvas.addEventListener('touchstart', startDrawingTouch, false);
 canvas.addEventListener('touchend', stopDrawing, false);
 canvas.addEventListener('touchmove', drawTouch, false);
@@ -152,10 +150,6 @@ function drawTouch(e) {
 }
 
 
-
-
-
-
 const logButton = document.getElementById('logButton');
 logButton.addEventListener('click', logCanvasData);
 function logCanvasData() {
@@ -179,28 +173,15 @@ function logCanvasData() {
     // Add the row to the grid
     grid.push(row);
   }
-
-  // Log the grid to the console
-  // console.log(grid);
-
-  // Convert the grid array to a 1D array
   let input = [];
   for (let i = 0; i < grid.length; i++) {
     input = input.concat(grid[i]);
   }
-
-
-  // // Convert the input array to a JSON string
   const jsonString = JSON.stringify(input);
   main(input);
 
-  // // Log the JSON string to the console
-  // console.log(jsonString);
-
-
 }
 
-// Global variable to hold the session
 let session;
 
 // Function to load the model
@@ -220,45 +201,22 @@ async function main(number) {
   try {
     //start time 
     const startTime = performance.now();
-    // const session = await ort.InferenceSession.create('./mnist-12.onnx');
-
-    // console.log('model loaded');
-
     const arrayLength = 784;
-    var randomNumberArray = number;
-    //divide random number by 255 to get a value between 0 and 1 using a map
-    randomNumberArray = randomNumberArray.map(num => num / 255);
+    let canvasArray = number;
+    canvasArray = canvasArray.map(num => num / 255);
+    const canvasTensor = new ort.Tensor('float32', canvasArray, [1, 1, 28, 28]);
 
-    const tensorA = new ort.Tensor('float32', randomNumberArray, [1, 1, 28, 28]);
+    // prepare feeds. use model input names as keys.
+    const feeds = { Input3: canvasTensor };
 
-    //Get the name of the input and output node
-    const inputName = session.inputNames[0];
-    const outputName = session.outputNames[0];
-
-
-
-    // // // prepare feeds. use model input names as keys.
-    const feeds = { Input3: tensorA };
-
-    // // // feed inputs and run
+    // feed inputs and run
     const results = await session.run(feeds);
 
-    // // read from results
-    const dataC = results.Plus214_Output_0.data;
+    // read from results
+    const resultsData = results.Plus214_Output_0.data;
 
-    function softmax(logits) {
-      const maxLogit = Math.max(...logits);
-      const expLogits = logits.map(logit => Math.exp(logit - maxLogit));
-      const sumExpLogits = expLogits.reduce((acc, expLogit) => acc + expLogit, 0);
-      const softmaxProbs = expLogits.map(expLogit => expLogit / sumExpLogits);
-      return softmaxProbs;
-    }
-
-    // Assuming dataC is an array of logits
-    const softmaxProbs = softmax(dataC);
-
-    // Find the index of the largest element in the softmaxProbs array
-    const largestIndex = softmaxProbs.indexOf(Math.max(...softmaxProbs));
+    // Results is currently a 1D logits array, but since we don't need to know probabilities or backpropogate, we can just argmax it to get the most likely class.
+    const largestIndex = resultsData.indexOf(Math.max(...resultsData));
 
     const numberClass = document.getElementById('outputNum');
     numberClass.innerText = largestIndex;
