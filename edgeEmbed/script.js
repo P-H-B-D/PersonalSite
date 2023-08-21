@@ -1,15 +1,32 @@
 let session; // Declare the session at a wider scope so it's accessible later
+// async function loadModel() {
+//     console.log("model loading!")
+//     session = await ort.InferenceSession.create('./onnx/model.onnx', { executionProviders: ['wasm'] });
+//     console.log("model loaded!")
+
+
+//     document.getElementById("modelLoadingText").textContent = "Model Loaded; Ready for inference.";
+//     document.getElementById("userInput").style.display = "inline-block";
+//     document.getElementById("submitBtn").style.display = "inline-block";
+
+// }
 async function loadModel() {
-    console.log("model loading!")
-    session = await ort.InferenceSession.create('./onnx/model.onnx', { executionProviders: ['wasm'] });
-    console.log("model loaded!")
+    const start=performance.now();
+    console.log("Model loading!");
+    const modelUrl = 'https://pub-4d800163b2fe42e89be7366a29cbc495.r2.dev/model.onnx'; // Replace with your R2 bucket URL
+    const response = await fetch(modelUrl);
+    const modelBuffer = await response.arrayBuffer();
+    const modelArrayBuffer = new Uint8Array(modelBuffer);
 
-
+    session = await ort.InferenceSession.create(modelArrayBuffer, { executionProviders: ['wasm'] });
+    const end=performance.now();
+    console.log("Model loaded! Took "+(end-start)+"ms");
     document.getElementById("modelLoadingText").textContent = "Model Loaded; Ready for inference.";
     document.getElementById("userInput").style.display = "inline-block";
     document.getElementById("submitBtn").style.display = "inline-block";
-
+    
 }
+
 
 window.onload = loadModel;
 
