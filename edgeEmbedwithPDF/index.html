@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" /> <!-- Prevents Caching -->
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+    
+    <link rel="stylesheet" href="styles.css" target="_blank">
+    <title>PHBD.xyz – Edge ML</title>
+</head>
+
+<body style="font-family:'Courier New', Courier, monospace; font-weight:400;">
+    <p><span style="font-size:large; font-weight:500;">Edge ML: all-MiniLM-L6-v2 Embeddings via ONNX WASM runtime</span>
+    </p>
+    <p><i>“A technical proof-of-concept for low-latency, client-side semantic vector search”</i></p>
+    <p>Please allow up to 60 seconds to load the model depending on your connection.</p>
+    <p id="loadingText">Tokenizer Loading...</p>
+    <p id="modelLoadingText">Model Loading...</p>
+
+    <input type="text" id="userInput" placeholder="Embedding Text..."
+        style="display:none; font-family:'Courier New', Courier, monospace;"> <!-- Textbox for user input -->
+    <button id="submitBtn" style="display:none; font-family:'Courier New', Courier, monospace;">Submit</button>
+    <!-- Submit button to trigger main function -->
+    <p id="vectorEntries"></p>
+    <p id="inferenceTime"></p>
+    <hr>
+    <p><span style="font-size:large; font-weight:500;">Vector Search V0.1</span></p>
+    <p><i>“Prototype client-side vector database that works in conjunction with edge embeddings”</i></p>
+    
+    <div class="flex-container" style="display:none; gap:25px;" id="embeddingTextBoxes">
+        <div>
+            <p id="addText"> Add: </p>
+            <form id="addForm">
+                <input type="text" id="addName" placeholder="New Embedding"
+                    style="font-family:'Courier New', Courier, monospace; font-weight:400;">
+                <button type="submit"
+                    style="font-family:'Courier New', Courier, monospace; font-weight:400;">Add</button>
+            </form>
+        </div>
+        <div>
+            <p id="searchText"> Search: </p>
+            <form id="searchForm">
+                <input type="text" id="searchName" placeholder="Embedding Search"
+                    style="font-family:'Courier New', Courier, monospace; font-weight:400;">
+                <button type="submit"
+                    style="font-family:'Courier New', Courier, monospace; font-weight:400;">Search</button>
+            </form>
+        </div>
+    </div>
+    <p><br></p>
+    <div id="embeddingTable" style="display:none;">
+    <p>Vector Array:</p>
+    <table id="dataTable"></table>
+    </div>
+    <hr>
+    <h1>PDF search test</h1>
+    <input type="file" id="pdfFile" accept=".pdf">
+    <div id="pdfText" style="margin-top: 20px; white-space: pre-wrap;"></div>
+    <button id="pdfFileButton">Embed This File</button>
+    <hr>
+    <p style="font-size:medium; font-weight:400;"><i><a style="text-decoration: none; color:navy;"
+                href="https://www.phbd.xyz/">PHBD.xyz</a>, 2023</i> | EdgeEmbed is <i><a
+                style="text-decoration: none; color:navy;"
+                href="https://github.com/P-H-B-D/PersonalSite/tree/main/edgeEmbed">Open-Source</a></i></p>
+    <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.min.js"></script>
+    <script src="vdb.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

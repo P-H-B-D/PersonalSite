@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
+            max-width:20%;
+        
+            table-layout: fixed;
+            overflow:hidden;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+            overflow: hidden;
+            text-overflow: clip;
+        }
+    </style>
+</head>
+
+<body style="font-family:'Courier New', Courier, monospace; font-weight:400;">
+    <p>Vector Search</p>
+    
+    <p> Add: </p>
+    <form id="addForm">
+        <input type="text" id="addName" placeholder="New Person Name">
+        <button type="submit">Add</button>
+    </form>
+
+    <p> Search: </p>
+    <form id="searchForm">
+        <input type="text" id="searchName" placeholder="Search">
+        <button type="submit">Search</button>
+    </form>
+    
+    <p>Vector Array:</p>
+    <table id="dataTable"></table>
+    
+    <script src="table.js"></script>
+</body>
+
+</html>
