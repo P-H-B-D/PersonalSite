@@ -232,10 +232,10 @@ xhr.onreadystatechange = function () {
                                 for (let i = 0; i < embeddingsArray.length; i++) {
                                     const addVector = embeddingsArray[i];
                                     const addName = chunkedTexts[i];
-                                    
+                                    const assignedId= (dataRows.length > 0 ? Math.max(...dataRows.map(row => row.id)) + 1 : 0);
                                 
                                     const newDataEntry = {
-                                        id: 27,
+                                        id: assignedId,
                                         embedding: addVector,
                                         content: addName,
                                         cosineSim: null
@@ -305,8 +305,6 @@ xhr.onreadystatechange = function () {
             //Compute embedding here.
             let addVector = await embed(addName);
             // console.log(addVector);
-
-
 
             const newDataEntry = {
                 id: randomId,
